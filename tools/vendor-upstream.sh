@@ -11,7 +11,8 @@
 # provenance.json, then runs the tests.
 set -euo pipefail
 
-PKG="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+PKG="$(cd "$SCRIPT_DIR/.." && pwd -P)"
 REF=""
 REF_SHA="${GSAP_REF:-${UPSTREAM_REF:-}}"
 REPO="${GSAP_UPSTREAM:-}"
@@ -67,12 +68,14 @@ done
 cp "$STAGE/skills/llms.txt" "$PKG/skills/llms.txt"
 
 # Four documented corrections; throws when an expected upstream string is gone.
-node "$PKG/tools/apply-corrections.mjs"
+CORRECTIONS_MODULE="$SCRIPT_DIR/apply-corrections.mjs"
+node "$CORRECTIONS_MODULE"
 
 VERSION="$(node -e 'process.stdout.write(require(process.argv[1]).version)' "$PKG/package.json")"
-REF_SHA="$REF_SHA" PROVENANCE_OUT="$PKG/provenance.json" node -e '
+REF_SHA="$REF_SHA" PROVENANCE_OUT="$PKG/provenance.json" CORRECTIONS_MODULE="$CORRECTIONS_MODULE" node -e '
 const { writeFileSync } = require("node:fs");
-import("./tools/apply-corrections.mjs").then(({ CORRECTIONS_SUMMARY }) => {
+const { pathToFileURL } = require("node:url");
+import(pathToFileURL(process.env.CORRECTIONS_MODULE).href).then(({ CORRECTIONS_SUMMARY }) => {
   const record = {
     upstream: "https://github.com/greensock/gsap-skills",
     ref: process.env.REF_SHA,
