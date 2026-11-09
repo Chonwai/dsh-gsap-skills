@@ -19,7 +19,7 @@ Initial release.
   upstream `skills/llms.txt`; `examples/` and `assets/` are deliberately not
   vendored.
 - Four documented factual corrections, applied at vendor time by the fail-loud
-  `tools/apply-corrections.mjs` (10 exact-string replacements across five
+  `tools/apply-corrections.mjs` (10 exact-string replacements across four
   files):
   1. `gsap-core`: CSSPlugin transform-alias order corrected to
      translation → rotation → rotationY → rotationX → skew → scale.

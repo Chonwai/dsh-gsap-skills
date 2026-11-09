@@ -2,7 +2,7 @@
 
 Vendored from `greensock/gsap-skills` at commit
 `aed9cfd3277740755f6bfc1155c7aa645403b760` (2026-04-21). This bundle applies
-four factual corrections (10 exact-string replacements across five files) and
+four factual corrections (10 exact-string replacements across four files) and
 documents additional upstream gaps it does **not** patch.
 
 All corrections are applied by `tools/apply-corrections.mjs`, which throws if an
