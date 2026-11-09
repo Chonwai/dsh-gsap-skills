@@ -13,7 +13,7 @@ set -euo pipefail
 
 PKG="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
 REF=""
-REF_SHA="${GSAP_REF:-${UUPM_REF:-}}"
+REF_SHA="${GSAP_REF:-${UPSTREAM_REF:-}}"
 REPO="${GSAP_UPSTREAM:-}"
 FROM_DIR=""
 RUN_TESTS=1
