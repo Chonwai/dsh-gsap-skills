@@ -21,6 +21,11 @@ applies to any managed profile.
 > which wins the duplicate name outright. **The bundle cannot override it.**
 > Migrate the file copies out first (§5).
 
+> Friend-facing distribution channels (Plugins page, git tag, release tarball,
+> future npm) with a copy-paste message are in
+> [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md); this file keeps the detailed
+> install/verify/rollback protocol.
+
 ## 0. Before you install
 
 | Item | Detail |

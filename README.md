@@ -22,6 +22,14 @@ to activate the bundle; see *Migrating from a file-level install* below. A
 profile install does not mean the row is the winning catalog entry while such a
 copy exists.
 
+## Quick start
+
+Install from **Plugins → Add plugin → Install a third-party plugin** with
+`https://github.com/Chonwai/dsh-gsap-skills#v1.0.1`, accept **Enable now**, then
+**restart DSH** and open a session; load `/gsap-core`. Other channels (release
+tarball, agent/`plugin_manager`, future npm), verification, layer migration and
+troubleshooting: [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md).
+
 ## What it provides
 
 | Skill | Use it for |
