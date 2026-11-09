@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # Release consistency check for @chonwai/dsh-gsap-skills.
 #
-# Verifies that the tag matches HEAD, every version mirror agrees, the checksums
-# verify, the npm tarball would contain the runtime/doc/test files, and the
-# working tree is clean. Intended to run on a tagged commit (CI runs it only for
-# v* tag pushes); locally run it after creating the tag.
+# Verifies version mirrors, checksums and npm-tarball completeness everywhere;
+# inside a git checkout it also verifies tag == HEAD and a clean working tree.
+# From an extracted npm tarball those three git checks print SKIP and the script
+# exits 0 when the portable checks pass. Intended for a tagged commit (CI runs
+# it only for v* tag pushes); locally run it after creating the tag.
 #
 #   bash tools/check-release.sh
 #
@@ -18,8 +19,12 @@ fail() { printf 'FAIL: %s\n' "$*" >&2; exit 1; }
 ok() { printf 'PASS  %s\n' "$*"; }
 
 command -v node >/dev/null 2>&1 || fail "node is required"
-command -v git >/dev/null 2>&1 || fail "git is required"
 command -v npm >/dev/null 2>&1 || fail "npm is required"
+
+IN_GIT=false
+if command -v git >/dev/null 2>&1 && git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  IN_GIT=true
+fi
 
 VERSION="$(node -e 'process.stdout.write(require("./package.json").version)')"
 TAG="v${VERSION}"
@@ -44,18 +49,23 @@ else
 fi
 ok "checksums.txt verifies"
 
-HEAD_COMMIT="$(git rev-parse HEAD)"
-EXACT_TAG="$(git describe --tags --exact-match 2>/dev/null || true)"
-[ "$EXACT_TAG" = "$TAG" ] ||
-  fail "HEAD is not exactly tag ${TAG} (git describe --tags --exact-match: '${EXACT_TAG:-no exact tag}')"
-TAG_COMMIT="$(git rev-parse "refs/tags/${TAG}^{commit}" 2>/dev/null || true)"
-[ -n "$TAG_COMMIT" ] || fail "tag ${TAG} does not resolve to a commit"
-[ "$TAG_COMMIT" = "$HEAD_COMMIT" ] || fail "tag ${TAG} points at ${TAG_COMMIT}, not HEAD ${HEAD_COMMIT}"
-ok "HEAD ${HEAD_COMMIT} is exactly tag ${TAG}"
+if [ "$IN_GIT" = true ]; then
+  HEAD_COMMIT="$(git rev-parse HEAD)"
+  EXACT_TAG="$(git describe --tags --exact-match 2>/dev/null || true)"
+  [ "$EXACT_TAG" = "$TAG" ] ||
+    fail "HEAD is not exactly tag ${TAG} (git describe --tags --exact-match: '${EXACT_TAG:-no exact tag}')"
+  TAG_COMMIT="$(git rev-parse "refs/tags/${TAG}^{commit}" 2>/dev/null || true)"
+  [ -n "$TAG_COMMIT" ] || fail "tag ${TAG} does not resolve to a commit"
+  [ "$TAG_COMMIT" = "$HEAD_COMMIT" ] || fail "tag ${TAG} points at ${TAG_COMMIT}, not HEAD ${HEAD_COMMIT}"
+  ok "HEAD ${HEAD_COMMIT} is exactly tag ${TAG}"
 
-DIRTY="$(git status --porcelain)"
-[ -z "$DIRTY" ] || fail "working tree is dirty (commit or stash first):$(printf '\n%s' "$DIRTY")"
-ok "working tree is clean"
+  DIRTY="$(git status --porcelain)"
+  [ -z "$DIRTY" ] || fail "working tree is dirty (commit or stash first):$(printf '\n%s' "$DIRTY")"
+  ok "working tree is clean"
+else
+  printf 'SKIP  tag/HEAD check: not inside a git checkout (extracted tarball?)\n'
+  printf 'SKIP  clean-tree check: not inside a git checkout\n'
+fi
 
 PACK_JSON="$(npm pack --dry-run --json 2>/dev/null)" || fail "npm pack --dry-run failed"
 PACK_JSON="$PACK_JSON" VERSION="$VERSION" node --input-type=module <<'JS' || exit 1
