@@ -4,6 +4,33 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2026-11-10
+
+### Fixed (documentation and release tooling)
+
+- `docs/DISTRIBUTION.md` now documents the install specs the Plugin Manager
+  **refuses**: a GitHub tree URL (`…/tree/main`, `…/tree/v1.0.1`) fails with
+  “a URL must point at a git repository or a tarball”, and a relative path
+  (`./x`, `../x`, `file:./x`) fails with “a local path must be absolute”. Use
+  the repo-root URL plus `#v1.0.2`, or an absolute directory/`.tgz` path.
+- Added a “What is verified / not verified” box and marked the Plugins-page
+  dialog steps as **expected UI behavior, not end-to-end re-tested in this
+  repo**; the artifact, spec parsing, npm resolution and tarball gates are
+  tested, and no profile was installed during release verification.
+- The friend copy-paste message is now exactly five lines and includes the
+  trust-box confirmation step.
+- README (both languages) records that the bundle is installed and live on the
+  maintainer's machine (v1.0.1/1.0.2); other machines still verify themselves.
+- `tools/check-release.sh` now works outside a git checkout (extracted npm
+  tarball): the tag/HEAD/clean-tree checks print `SKIP`, while the version,
+  checksums and pack checks still run and the script exits 0 when they pass.
+
+### Changed
+
+- Version 1.0.2 (package, `lib/index.js`, test assertions, checksums header).
+  `provenance.json` is unchanged; no vendored skill content or runtime behavior
+  changed.
+
 ## [1.0.1] - 2026-11-10
 
 ### Added
