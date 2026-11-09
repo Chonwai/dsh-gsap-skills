@@ -66,7 +66,7 @@ Always use **property names in camelCase** in the vars object (e.g. `backgroundC
 
 ## Transforms and CSS properties
 
-GSAP’s CSSPlugin (included in core) animates DOM elements. Use **camelCase** for CSS properties (e.g. `fontSize`, `backgroundColor`). Prefer GSAP’s **transform aliases** over the raw `transform` string: they apply in a consistent order (translation → scale → rotationX/Y → skew → rotation), are more performant, and work reliably across browsers.
+GSAP’s CSSPlugin (included in core) animates DOM elements. Use **camelCase** for CSS properties (e.g. `fontSize`, `backgroundColor`). Prefer GSAP’s **transform aliases** over the raw `transform` string: they apply in a consistent order (translation → rotation → rotationY → rotationX → skew → scale), are more performant, and work reliably across browsers.
 
 **Transform aliases (prefer over translateX(), rotate(), etc.):**
 

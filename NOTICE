@@ -1,0 +1,73 @@
+@chonwai/dsh-gsap-skills
+Copyright (c) 2026 Chonwai
+Licensed under the MIT License (see LICENSE).
+
+This is an independent, unofficial DeepSeek Harness bundle of the official GSAP
+skills. It is not affiliated with, sponsored by, or endorsed by GreenSock or the
+GSAP project. "GSAP" and "GreenSock" are trademarks of GreenSock, Inc.
+
+Third-party attribution
+-----------------------
+
+GSAP skills
+  Upstream:  https://github.com/greensock/gsap-skills
+  Source:    commit aed9cfd3277740755f6bfc1155c7aa645403b760 (2026-04-21)
+  Version:   n/a (the upstream repository has no package.json or skill.json
+             version field)
+  License:   MIT
+  Copyright: (c) 2026 GreenSock
+
+Vendored files (sha256 pinned in checksums.txt):
+  skills/gsap-core/SKILL.md
+  skills/gsap-timeline/SKILL.md
+  skills/gsap-scrolltrigger/SKILL.md
+  skills/gsap-plugins/SKILL.md
+  skills/gsap-utils/SKILL.md
+  skills/gsap-react/SKILL.md
+  skills/gsap-frameworks/SKILL.md
+  skills/gsap-performance/SKILL.md
+  skills/llms.txt
+
+Modified: 4 factual corrections (10 exact-string replacements across 5 files),
+applied by tools/apply-corrections.mjs; see docs/KNOWN-UPSTREAM-ISSUES.md:
+  1. gsap-core: CSSPlugin transform-alias order corrected to
+     translation -> rotation -> rotationY -> rotationX -> skew -> scale.
+  2. gsap-timeline: removed the wrong "(default)" markers on the position
+     parameter and stated that omitting it appends at the end of the timeline.
+  3. gsap-scrolltrigger: refreshPriority direction corrected (higher numbers
+     refresh first; first section on the page = higher number).
+  4. gsap-frameworks: duplicate `type Plugins` declaration renamed to
+     `type PluginName`, with PluginModule/PluginExport/lazyLoadPlugin updated.
+No other prose was added or removed. The repository's examples/, assets/ and
+plugin metadata files are not bundled (they are demo material, not skills).
+
+GSAP library
+  The GSAP library itself is NOT included in this package and is NOT MIT
+  licensed. GSAP is free to use under GreenSock's own standard license (see
+  https://gsap.com/licensing/); this bundle contains documentation skills only,
+  no GSAP source code. Users install GSAP separately under its own terms.
+
+Upstream MIT license text
+-------------------------
+
+MIT License
+
+Copyright (c) 2026 GreenSock
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

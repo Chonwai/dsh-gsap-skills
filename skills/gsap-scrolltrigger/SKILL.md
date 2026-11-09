@@ -58,7 +58,7 @@ Main properties for the `scrollTrigger` config object (shorthand: `scrollTrigger
 | **markers** | Boolean \| Object | `true` for dev markers; or `{ startColor, endColor, fontSize, ... }`. Remove in production. |
 | **once** | Boolean | If `true`, kills the ScrollTrigger after end is reached once (animation keeps running). |
 | **id** | String | Unique id for **ScrollTrigger.getById(id)**. |
-| **refreshPriority** | Number | Lower = refreshed first. Use when creating ScrollTriggers in non–top-to-bottom order: set so triggers refresh in page order (first on page = lower number). |
+| **refreshPriority** | Number | Higher = refreshed first. Use when creating ScrollTriggers in non–top-to-bottom order: set so triggers refresh in page order (first on page = higher number). |
 | **toggleClass** | String \| Object | Add/remove class when active. String = on trigger; or `{ targets: ".x", className: "active" }`. |
 | **snap** | Number \| Array \| Function \| "labels" \| Object | Snap to progress values. Number = increments (e.g. `0.25`); array = specific values; `"labels"` = timeline labels; object: `{ snapTo: 0.25, duration: 0.3, delay: 0.1, ease: "power1.inOut" }`. |
 | **containerAnimation** | Tween \| Timeline | For "fake" horizontal scroll: the timeline/tween that moves content horizontally. ScrollTrigger ties vertical scroll to this animation's progress. See **Horizontal scroll (containerAnimation)** below. Pinning and snapping are not available on containerAnimation-based ScrollTriggers. |
@@ -276,7 +276,7 @@ In React, use the `useGSAP()` hook (@gsap/react NPM package) to ensure proper cl
 - ✅ In React, use the `useGSAP()` hook to ensure that all ScrollTriggers and GSAP animations are reverted and cleaned up when necessary, or use a `gsap.context()` to do it manually in a useEffect/useLayoutEffect cleanup function. 
 - ✅ Use **scrub** for scroll-linked progress or **toggleActions** for discrete play/reverse; do not use both on the same trigger.
 - ✅ For fake horizontal scroll with **containerAnimation**, use **ease: "none"** on the horizontal tween/timeline so scroll and horizontal position stay in sync.
-- ✅ Create ScrollTriggers in the order they appear on the page (top to bottom, scroll 0 → max). When they are created in a different order (e.g. dynamic or async), set **refreshPriority** on each so they are refreshed in that same top-to-bottom order (first section on page = lower number).
+- ✅ Create ScrollTriggers in the order they appear on the page (top to bottom, scroll 0 → max). When they are created in a different order (e.g. dynamic or async), set **refreshPriority** on each so they are refreshed in that same top-to-bottom order (higher numbers refresh first, so the first section on the page gets a higher number).
 
 ## Do Not
 
@@ -286,7 +286,7 @@ In React, use the `useGSAP()` hook (@gsap/react NPM package) to ensure proper cl
 - ❌ Forget to **gsap.registerPlugin(ScrollTrigger)** before using ScrollTrigger.
 - ❌ Use **scrub** and **toggleActions** together on the same ScrollTrigger; choose one behavior. If both exist, **scrub** wins.
 - ❌ Use an ease other than **"none"** on the horizontal animation when using **containerAnimation** for fake horizontal scroll; it breaks the 1:1 scroll-to-position mapping.
-- ❌ Create ScrollTriggers in random or async order without setting **refreshPriority**; refresh runs in creation order (or by refreshPriority), and wrong order can affect layout (e.g. pin spacing). Create them top-to-bottom or assign **refreshPriority** so they refresh in page order.
+- ❌ Create ScrollTriggers in random or async order without setting **refreshPriority**; refresh runs in creation order (or by refreshPriority), and wrong order can affect layout (e.g. pin spacing). Create them top-to-bottom or assign **refreshPriority** (higher numbers refresh first) so they refresh in page order.
 - ❌ Leave **markers: true** in production.
 - ❌ Forget **refresh()** after layout changes (new content, images, fonts) that affect trigger positions; viewport resize is handled automatically.
 

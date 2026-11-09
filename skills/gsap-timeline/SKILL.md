@@ -21,16 +21,16 @@ tl.to(".a", { x: 100, duration: 1 })
   .to(".c", { opacity: 0, duration: 0.3 });
 ```
 
-By default, tweens are **appended** one after another. Use the **position parameter** to place tweens at specific times or relative to other tweens.
+By default — when no position parameter is given — tweens are **appended at the end of the timeline**, one after another. `">"` means "after the most recently added animation", not "the default". Use the **position parameter** to place tweens at specific times or relative to other tweens.
 
 ## Position Parameter
 
 Third argument (or position property in vars) controls placement:
 
 - **Absolute**: `1` — start at 1 second.
-- **Relative (default)**: `"+=0.5"` — 0.5s after end; `"-=0.2"` — 0.2s before end.
+- **Relative**: `"+=0.5"` — 0.5s after end; `"-=0.2"` — 0.2s before end.
 - **Label**: `"labelName"` — at that label; `"labelName+=0.3"` — 0.3s after label.
-- **Placement**: `"<"` — start when recently-added animation starts; `">"` — start when recently-added animation ends (default); `"<0.2"` — 0.2s after recently-added animation start.
+- **Placement**: `"<"` — start when recently-added animation starts; `">"` — start when recently-added animation ends; `"<0.2"` — 0.2s after recently-added animation start.
 
 Examples:
 
