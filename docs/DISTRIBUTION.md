@@ -75,8 +75,9 @@ host mounted the row — restart DSH before expecting the skills.
 
 ## 5. Channel 3 — offline tarball
 
-Download `dsh-gsap-skills-1.0.1.tgz` from the GitHub release (or build it with
-`npm pack` in a checkout), then verify and install it:
+Download `dsh-gsap-skills-1.0.1.tgz` from the GitHub release, then verify and
+install it (`npm pack` names the same bytes `chonwai-dsh-gsap-skills-1.0.1.tgz`;
+the release asset is renamed):
 
 ```bash
 shasum -a 256 -c dsh-gsap-skills-1.0.1.tgz.sha256

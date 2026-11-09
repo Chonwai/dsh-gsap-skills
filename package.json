@@ -1,6 +1,6 @@
 {
   "name": "@chonwai/dsh-gsap-skills",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "GreenSock's official GSAP skills packaged as an unofficial DeepSeek Harness bundle (eight skills, no runtime scripts).",
   "license": "MIT",
@@ -37,6 +37,7 @@
     "lib/**/*.js",
     "skills",
     "docs",
+    "tests",
     "patches",
     "cordis.patch.yml",
     "locale/*.json",
