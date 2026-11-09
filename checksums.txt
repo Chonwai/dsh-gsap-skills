@@ -1,0 +1,12 @@
+# sha256 pins for the vendored files of @chonwai/dsh-gsap-skills 1.0.0
+# Upstream: GSAP skills, MIT (https://github.com/greensock/gsap-skills)
+# Pinned commit: provenance.json / NOTICE. Regenerate: bash tools/vendor-upstream.sh <git-ref> --repo <checkout>
+e81ce279d460a3125b598787e133c8ce0700c2b33f01e18a31813241e0b925b8  skills/gsap-core/SKILL.md
+0d1bbc3dc1576def4616b2ac95b23be5234fd84f6d51b894e91a08404203b621  skills/gsap-frameworks/SKILL.md
+cb5408d6fba707aabcbfe3320317a14c1f8fca6070074e5261047930f50d441e  skills/gsap-performance/SKILL.md
+5838b856c74c07fbc9fa99b6dfd1eee34ea554c3e530c30e0d58014b707d70a4  skills/gsap-plugins/SKILL.md
+88e2a5312b45e8cc7b3c496637ff5bc9af2ae9c925b555c8b235b34cbc989d74  skills/gsap-react/SKILL.md
+96f2a56fa7f05673afea1492b07996134ec45822180e80190dd71ab8cdd43dce  skills/gsap-scrolltrigger/SKILL.md
+9542b148eab3b8ff21d1f9b524ce1541ce95b637b616408070469f5f80898149  skills/gsap-timeline/SKILL.md
+1927bcc4ea95b38203404ad5ea1d060b15c4a886c65ae53e885ff1793aabe0ba  skills/gsap-utils/SKILL.md
+32dab4bde09bc822ac17ebc49ee2ff87ca8c304a1c6e0509aadde7223f78b42f  skills/llms.txt

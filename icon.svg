@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="GSAP Skills for DeepSeek Harness">
+  <title>GSAP Skills for DeepSeek Harness</title>
+  <rect width="64" height="64" rx="15" fill="#0b1220"/>
+  <path d="M12 46 C20 22, 44 22, 52 46" fill="none" stroke="#34d399" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="12" cy="46" r="5" fill="#a7f3d0"/>
+  <circle cx="52" cy="46" r="5" fill="#a7f3d0"/>
+  <path d="M32 12 l7 7 -7 7 -7 -7z" fill="#fbbf24"/>
+  <line x1="10" y1="54" x2="54" y2="54" stroke="#334155" stroke-width="2" stroke-linecap="round"/>
+</svg>

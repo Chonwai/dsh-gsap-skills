@@ -1,0 +1,27 @@
+{
+  "upstream": "https://github.com/greensock/gsap-skills",
+  "ref": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+  "upstreamVersion": "n/a (no package.json or skill.json in the upstream repo)",
+  "corrections": [
+    {
+      "id": "core-transform-order",
+      "title": "CSSPlugin transform-alias order",
+      "issue": "unreported; verified against gsap@3.15.1 src/CSSPlugin.js (_renderCSSTransforms)"
+    },
+    {
+      "id": "timeline-position-parameter-defaults",
+      "title": "position parameter \"(default)\" markers and append-at-end semantics",
+      "issue": "https://github.com/greensock/gsap-skills/issues/21"
+    },
+    {
+      "id": "scrolltrigger-refresh-priority-direction",
+      "title": "refreshPriority direction (higher numbers refresh first)",
+      "issue": "https://github.com/greensock/gsap-skills/issues/20 (see also #15)"
+    },
+    {
+      "id": "frameworks-duplicate-type-plugins",
+      "title": "duplicate `type Plugins` declaration in the framework plugin loader",
+      "issue": "https://github.com/greensock/gsap-skills/issues/23"
+    }
+  ]
+}
