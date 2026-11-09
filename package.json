@@ -2,7 +2,7 @@
   "name": "@chonwai/dsh-gsap-skills",
   "version": "1.0.0",
   "private": true,
-  "description": "Official GSAP skills for DeepSeek Harness: the eight greensock/gsap-skills SKILL.md files vendored at aed9cfd3 with four documented factual corrections, registered as runtime skills. MIT, no runtime dependencies.",
+  "description": "GreenSock's official GSAP skills packaged as an unofficial DeepSeek Harness bundle (eight skills, no runtime scripts).",
   "license": "MIT",
   "author": "Chonwai",
   "keywords": [

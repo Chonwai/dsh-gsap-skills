@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "GSAP Skills for DeepSeek Harness",
-    "description": "把 GSAP 官方 8 個 skill（core、timeline、ScrollTrigger、plugins、utils、React、frameworks、performance）打包進 bundle，套用 4 項已記錄的內容更正，並註冊為 runtime skills。",
+    "description": "\u975e\u5b98\u65b9 DeepSeek Harness bundle\uff1a\u628a GreenSock \u5b98\u65b9 8 \u500b GSAP skill\uff08core\u3001timeline\u3001ScrollTrigger\u3001plugins\u3001utils\u3001React\u3001frameworks\u3001performance\uff09\u6253\u5305\uff0c\u5957\u7528 4 \u9805\u5df2\u8a18\u9304\u7684\u5167\u5bb9\u66f4\u6b63\uff0c\u4e26\u8a3b\u518a\u70ba runtime skills\u3002",
     "detail": "README.zh-TW.md"
   }
 }
