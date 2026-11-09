@@ -1,0 +1,64 @@
+{
+  "name": "@chonwai/dsh-gsap-skills",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Official GSAP skills for DeepSeek Harness: the eight greensock/gsap-skills SKILL.md files vendored at aed9cfd3 with four documented factual corrections, registered as runtime skills. MIT, no runtime dependencies.",
+  "license": "MIT",
+  "author": "Chonwai",
+  "keywords": [
+    "gsap",
+    "greensock",
+    "deepseek-harness",
+    "dsh",
+    "dsh-bundle",
+    "dsh-plugin",
+    "ai-skills",
+    "agent-skills",
+    "animation"
+  ],
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "test": "bash tests/offline-check.sh",
+    "check": "node --check lib/index.js && node --check tests/host-smoke.mjs && node --check tests/registry-smoke.mjs && node --check tools/apply-corrections.mjs",
+    "smoke": "node tests/host-smoke.mjs && node tests/registry-smoke.mjs",
+    "registry-smoke": "node tests/registry-smoke.mjs",
+    "corrections-check": "node tools/apply-corrections.mjs --check"
+  },
+  "icon": "./icon.svg",
+  "files": [
+    "lib/**/*.js",
+    "skills",
+    "docs",
+    "patches",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "README.zh-TW.md",
+    "INSTALL.md",
+    "LICENSE",
+    "NOTICE",
+    "CHANGELOG.md",
+    "SECURITY.md",
+    "checksums.txt",
+    "provenance.json",
+    "tools"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "node": ">=22",
+    "dsh": ">=0.2.2-rc.1 <0.3.0"
+  }
+}

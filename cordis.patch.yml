@@ -1,0 +1,14 @@
+# Bundle patch for @chonwai/dsh-gsap-skills.
+#
+# Applied once when the profile lists this bundle in `dsh.profile.bundles`.
+# It inserts the single plugin row that registers the eight vendored
+# `skills/gsap-*/SKILL.md` files as runtime skills.
+#
+# Do NOT insert this row a second time from the profile's own
+# `cordis.patch.yml`: `insert` does not dedupe ids, and a second row would
+# mount the plugin twice (sixteen registrations competing for eight names).
+# The bundle is the only owner of this row; `config` is empty in v1.
+- insert:
+    - id: gsap
+      name: '@chonwai/dsh-gsap-skills'
+      config: {}
