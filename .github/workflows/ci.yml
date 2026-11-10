@@ -27,7 +27,9 @@ jobs:
       - name: Offline gate
         run: npm test
       - name: Host and registry smoke
-        run: npm run smoke
+        run: node tests/host-smoke.mjs && node tests/registry-smoke.mjs
+      - name: Demo browser smoke
+        run: npm run smoke:demo
       - name: Release consistency (tags only)
         if: startsWith(github.ref, 'refs/tags/v')
         run: bash tools/check-release.sh

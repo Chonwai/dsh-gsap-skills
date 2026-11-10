@@ -27,10 +27,11 @@
   },
   "scripts": {
     "test": "bash tests/offline-check.sh",
-    "check": "node --check lib/index.js && node --check tests/host-smoke.mjs && node --check tests/registry-smoke.mjs && node --check tools/apply-corrections.mjs",
-    "smoke": "node tests/host-smoke.mjs && node tests/registry-smoke.mjs",
+    "check": "node --check lib/index.js && node --check tests/host-smoke.mjs && node --check tests/registry-smoke.mjs && node --check tools/apply-corrections.mjs && node --check tests/demo-smoke.mjs",
+    "smoke": "node tests/host-smoke.mjs && node tests/registry-smoke.mjs && node tests/demo-smoke.mjs",
     "registry-smoke": "node tests/registry-smoke.mjs",
-    "corrections-check": "node tools/apply-corrections.mjs --check"
+    "corrections-check": "node tools/apply-corrections.mjs --check",
+    "smoke:demo": "node tests/demo-smoke.mjs"
   },
   "icon": "./icon.svg",
   "files": [
