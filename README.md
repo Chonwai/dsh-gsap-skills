@@ -30,6 +30,16 @@ Install from **Plugins → Add plugin → Install a third-party plugin** with
 tarball, agent/`plugin_manager`, future npm), verification, layer migration and
 troubleshooting: [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md).
 
+## Demo
+
+[`demo/`](demo/) is a self-contained interactive page built with the bundle's own
+guidance: a hero entrance timeline, scroll-revealed skill cards, and a pinned,
+scroll-scrubbed Timeline → ScrollTrigger → Plugins strip, with reduced-motion and
+no-CDN fallbacks. Serve the repo with `python3 -m http.server 8000` and open
+`/demo/`; it loads GSAP 3.15.1 from a pinned CDN, so it needs network.
+
+![Interactive demo: dark hero, eight skill cards and a pinned scroll strip](assets/demo.png)
+
 ## What it provides
 
 | Skill | Use it for |

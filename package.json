@@ -51,7 +51,9 @@
     "SECURITY.md",
     "checksums.txt",
     "provenance.json",
-    "tools"
+    "tools",
+    "demo",
+    "assets"
   ],
   "dsh": {
     "bundle": {

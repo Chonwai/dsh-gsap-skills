@@ -319,7 +319,8 @@ import { existsSync, readFileSync } from 'node:fs';
 const problems = [];
 for (const doc of ['README.md', 'README.zh-TW.md', 'INSTALL.md', 'CHANGELOG.md', 'docs/KNOWN-UPSTREAM-ISSUES.md', 'docs/SERIES.md']) {
   const text = readFileSync(doc, 'utf8');
-  for (const match of text.matchAll(/\[[^\]]*\]\(([^)\s]+)\)/g)) {
+  // Markdown images (screenshots under assets/) are not documentation links.
+  for (const match of text.matchAll(/(?<!!)\[[^\]]*\]\(([^)\s]+)\)/g)) {
     const target = match[1];
     if (/^(https?:|mailto:|#)/.test(target)) continue;
     const path = target.split('#')[0];

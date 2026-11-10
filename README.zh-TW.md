@@ -26,6 +26,16 @@ row；因此 `~/.agents/skills`、`$DSH_HOME/skills` 或專案 `.agents/skills` 
 agent／`plugin_manager`、未來 npm）、驗證方式、layer 遷移與疑難排解：
 [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md)。
 
+## Demo
+
+[`demo/`](demo/) 是一個自包含的互動展示頁，用本 bundle 自己的 skill 指引寫成：
+hero 進場 timeline、隨滾動揭露的 skill 卡片，以及 pinned、隨滾動 scrub 的
+Timeline → ScrollTrigger → Plugins 橫向條，並具備 reduced-motion 與 CDN 失敗的
+fallback。在 repo 根目錄跑 `python3 -m http.server 8000`，開 `/demo/`；頁面從
+pinned CDN 載入 GSAP 3.15.1，需要網路。
+
+![互動 demo：深色 hero、八張 skill 卡片與 pinned 滾動橫條](assets/demo.png)
+
 ## 這個 bundle 提供什麼
 
 | Skill | 用途 |
