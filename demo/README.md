@@ -46,6 +46,5 @@ browser file restrictions.
 | `demo.js` | GSAP timelines, `ScrollTrigger.batch`, the pinned strip, reduced-motion/no-GSAP guards |
 | `README.md` | This file |
 
-The screenshot referenced from the top-level README is a placeholder path
-(`assets/demo.png`); the image is added by the maintainer separately. No image is
-committed by this demo.
+The screenshot referenced from the top-level README is committed at
+`assets/demo.png` and is shipped in the npm package.

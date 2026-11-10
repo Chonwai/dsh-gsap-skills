@@ -15,7 +15,7 @@ each project installs GSAP separately under GreenSock's license.
 |---|---|
 | `npm pack` tarball completeness and gates (`npm test`, host/registry smoke, checksums) run from an extracted package | the actual **Plugins-page UI flow** (dialog, trust box, Enable now) — documented as expected UI behavior, not end-to-end re-tested in this repo |
 | the real DSH `parseInstallSpec` accepting the documented forms (and rejecting tree URLs / relative paths) | installing into a managed DSH profile — no profile was installed during release verification |
-| `npm install github:…#v1.0.3` resolving the tag to the right commit | the npm registry channel (the package is `private`) |
+| `npm install github:…#v1.0.4` resolving the tag to the right commit | the npm registry channel (the package is `private`) |
 | version/checksums/release consistency via `tools/check-release.sh` | GSAP runtime animation behavior (the bundle ships docs, not the library) |
 
 ## 1. Prerequisites
@@ -42,12 +42,12 @@ fragment is allowed on hosted git URLs and shorthand specs):
 | Form | Example |
 |---|---|
 | absolute local directory | `/Users/you/dsh-gsap-skills` |
-| absolute local tarball | `/Users/you/Downloads/dsh-gsap-skills-1.0.3.tgz` |
-| http(s) tarball | `https://example.com/dsh-gsap-skills-1.0.3.tgz` |
-| git shorthand + tag | `github:Chonwai/dsh-gsap-skills#v1.0.3` |
-| git URL | `git+https://github.com/Chonwai/dsh-gsap-skills.git#v1.0.3` |
-| hosted repository URL + tag | `https://github.com/Chonwai/dsh-gsap-skills#v1.0.3` |
-| npm package name (future) | `@chonwai/dsh-gsap-skills@1.0.3` |
+| absolute local tarball | `/Users/you/Downloads/dsh-gsap-skills-1.0.4.tgz` |
+| http(s) tarball | `https://example.com/dsh-gsap-skills-1.0.4.tgz` |
+| git shorthand + tag | `github:Chonwai/dsh-gsap-skills#v1.0.4` |
+| git URL | `git+https://github.com/Chonwai/dsh-gsap-skills.git#v1.0.4` |
+| hosted repository URL + tag | `https://github.com/Chonwai/dsh-gsap-skills#v1.0.4` |
+| npm package name (future) | `@chonwai/dsh-gsap-skills@1.0.4` |
 
 Pinning a tag is strongly recommended: branches move, tags do not. The forms
 above are equivalent; the hosted URL is the friendliest to paste into the
@@ -59,15 +59,15 @@ The Plugin Manager validates the spec before pnpm sees it. Two failures are
 common:
 
 - A GitHub **tree URL** — `https://github.com/Chonwai/dsh-gsap-skills/tree/main`
-  or `…/tree/v1.0.3` — is refused with
+  or `…/tree/v1.0.4` — is refused with
   `a URL must point at a git repository or a tarball`. Use the **repo-root**
-  URL plus the tag: `https://github.com/Chonwai/dsh-gsap-skills#v1.0.3`.
+  URL plus the tag: `https://github.com/Chonwai/dsh-gsap-skills#v1.0.4`.
 - A **relative path** — `./x`, `../x`, `file:./x` — is refused with
   `a local path must be absolute`. Use an absolute directory or `.tgz` path
   (`/Users/you/...`).
 
-`github:Chonwai/dsh-gsap-skills#v1.0.3` and
-`git+https://github.com/Chonwai/dsh-gsap-skills.git#v1.0.3` are accepted
+`github:Chonwai/dsh-gsap-skills#v1.0.4` and
+`git+https://github.com/Chonwai/dsh-gsap-skills.git#v1.0.4` are accepted
 alternatives to the hosted URL.
 
 ## 3. Channel 1 — Plugins page (recommended for friends)
@@ -75,8 +75,8 @@ alternatives to the hosted URL.
 1. Open **DSH → Plugins** in the sidebar.
 2. **Add plugin** → **Install a third-party plugin**.
 3. Paste the pinned spec:
-   `https://github.com/Chonwai/dsh-gsap-skills#v1.0.3`
-   (or `github:Chonwai/dsh-gsap-skills#v1.0.3`).
+   `https://github.com/Chonwai/dsh-gsap-skills#v1.0.4`
+   (or `github:Chonwai/dsh-gsap-skills#v1.0.4`).
 4. Read the trust box and confirm. DSH clones the tag, adds the profile
    dependency and bundle row, and enables the bundle.
 5. If the dialog offers **Enable now**, accept it.
@@ -96,7 +96,7 @@ credentials.
 From a session with Full access (or an approval prompt you can answer):
 
 ```
-plugin_manager(action: "install_bundle", target: "https://github.com/Chonwai/dsh-gsap-skills#v1.0.3")
+plugin_manager(action: "install_bundle", target: "https://github.com/Chonwai/dsh-gsap-skills#v1.0.4")
 ```
 
 The same absolute-path, tarball-URL or git forms are accepted. The returned
@@ -105,14 +105,14 @@ host mounted the row — restart DSH before expecting the skills.
 
 ## 5. Channel 3 — offline tarball
 
-Download `dsh-gsap-skills-1.0.3.tgz` from the GitHub release, then verify and
-install it (`npm pack` names the same bytes `chonwai-dsh-gsap-skills-1.0.3.tgz`;
+Download `dsh-gsap-skills-1.0.4.tgz` from the GitHub release, then verify and
+install it (`npm pack` names the same bytes `chonwai-dsh-gsap-skills-1.0.4.tgz`;
 the release asset is renamed):
 
 ```bash
-shasum -a 256 -c dsh-gsap-skills-1.0.3.tgz.sha256
+shasum -a 256 -c dsh-gsap-skills-1.0.4.tgz.sha256
 # then, in the Plugins dialog, paste the absolute path to the .tgz:
-#   /Users/you/Downloads/dsh-gsap-skills-1.0.3.tgz
+#   /Users/you/Downloads/dsh-gsap-skills-1.0.4.tgz
 ```
 
 `plugin_manager` accepts the same absolute tarball path. An extracted directory
@@ -131,7 +131,7 @@ registry channel is **not available yet**. If the maintainer later publishes it:
 npm publish --access public        # after flipping private -> false for that release
 
 # friend
-plugin_manager(action: "install_bundle", target: "@chonwai/dsh-gsap-skills@1.0.3")
+plugin_manager(action: "install_bundle", target: "@chonwai/dsh-gsap-skills@1.0.4")
 ```
 
 Publishing is a deliberate human step; do not assume a registry name exists
@@ -210,7 +210,7 @@ package deletes or edits those copies for you.
 ```
 GSAP skills for DeepSeek Harness — unofficial bundle, 8 skills:
 https://github.com/Chonwai/dsh-gsap-skills
-DSH → Plugins → Add plugin → Install a third-party plugin → paste https://github.com/Chonwai/dsh-gsap-skills#v1.0.3
+DSH → Plugins → Add plugin → Install a third-party plugin → paste https://github.com/Chonwai/dsh-gsap-skills#v1.0.4
 Read the trust box and confirm, choose Enable now, restart DSH, then load /gsap-core.
 If skills don't appear: move ~/.agents/skills/gsap-* (and $DSH_HOME/skills, project .agents/skills) out of the skills root.
 ```

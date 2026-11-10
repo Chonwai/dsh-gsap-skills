@@ -25,7 +25,7 @@ copy exists.
 ## Quick start
 
 Install from **Plugins → Add plugin → Install a third-party plugin** with
-`https://github.com/Chonwai/dsh-gsap-skills#v1.0.3`, accept **Enable now**, then
+`https://github.com/Chonwai/dsh-gsap-skills#v1.0.4`, accept **Enable now**, then
 **restart DSH** and open a session; load `/gsap-core`. Other channels (release
 tarball, agent/`plugin_manager`, future npm), verification, layer migration and
 troubleshooting: [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md).
@@ -191,9 +191,9 @@ package tree is present; **SKIP is not verification, only a real `PASS` counts.*
 
 - **Live activation on other machines.** The maintainer's machine has the
   bundle installed and live: `skill("gsap-core")` loads from the installed
-  package on v1.0.2/1.0.3 (after the required DSH restart). Verify the same on
-  yours — the loaded `Base directory` must point into the package, not
-  `~/.agents`.
+  package, and the on-disk version follows the latest release. A new machine may
+  need a restart after installing. Verify on yours — the loaded `Base directory`
+  must point into the package, not `~/.agents`.
 - **Plugins page rendering** of the localized title/description and the icon.
 - **GSAP runtime behaviour.** The corrections were verified against GSAP 3.15.1
   source (and the upstream issues), not by running each animation in a browser;

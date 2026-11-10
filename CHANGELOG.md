@@ -4,6 +4,18 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.4] - 2026-11-11
+
+### Fixed (demo and documentation)
+
+- `demo/README.md` no longer describes the screenshot as a placeholder: the
+  committed `assets/demo.png` is referenced from the top-level README.
+- `demo/index.html` declares an empty favicon, removing the harmless
+  `/favicon.ico` 404 in the browser console.
+- Both READMEs describe the maintainer's live install without claiming an
+  observed restart; install pins in `docs/DISTRIBUTION.md` and the READMEs are
+  now `#v1.0.4`.
+
 ## [1.0.3] - 2026-11-11
 
 ### Added

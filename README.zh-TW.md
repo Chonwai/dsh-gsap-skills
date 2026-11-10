@@ -21,7 +21,7 @@ row；因此 `~/.agents/skills`、`$DSH_HOME/skills` 或專案 `.agents/skills` 
 ## Quick start
 
 在 **Plugins → Add plugin → Install a third-party plugin** 貼上
-`https://github.com/Chonwai/dsh-gsap-skills#v1.0.3`，按 **Enable now**，然後
+`https://github.com/Chonwai/dsh-gsap-skills#v1.0.4`，按 **Enable now**，然後
 **重啟 DSH**、開新 session，載入 `/gsap-core`。其他安裝通道（release tarball、
 agent／`plugin_manager`、未來 npm）、驗證方式、layer 遷移與疑難排解：
 [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md)。
@@ -176,9 +176,10 @@ watcher 在下一個 pre-step 接手（移除本身不需要重啟）；但**安
 
 **未驗證：**
 
-- **其他機器上的 live 啟用。** 維護者機器已安裝並生效：v1.0.2/1.0.3 上
-  `skill("gsap-core")` 由安裝的套件載入（需先重啟 DSH）。請在你的機器上照
-  INSTALL §4 驗證——載入的 `Base directory` 必須指向套件，而不是 `~/.agents`。
+- **其他機器上的 live 啟用。** 維護者機器已安裝並生效：`skill("gsap-core")`
+  由安裝的套件載入，on-disk 版本跟隨最新 release；新機器安裝後可能需要重啟。
+  請在你的機器上照 INSTALL §4 驗證——載入的 `Base directory` 必須指向套件，
+  而不是 `~/.agents`。
 - **Plugins 頁面的呈現**：本地化標題／說明與 icon 的實際畫面。
 - **GSAP runtime 行為**：4 項更正是對 GSAP 3.15.1 原始碼與 upstream issue
   驗證，不是逐個動畫在瀏覽器實跑；套件沒有隨附 GSAP。
