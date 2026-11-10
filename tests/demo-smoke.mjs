@@ -154,9 +154,9 @@ async function pageWebSocketUrl(port) {
   throw new Error('Chrome did not expose a page target');
 }
 
-async function devtoolsPort(userDataDir) {
+async function devtoolsPort(userDataDir, attempts = 300) {
   const file = join(userDataDir, 'DevToolsActivePort');
-  for (let attempt = 0; attempt < 100; attempt += 1) {
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
     if (existsSync(file)) {
       const [port] = readFileSync(file, 'utf8').split('\n');
       if (port && Number(port) > 0) return Number(port);
@@ -210,10 +210,19 @@ try {
   ];
   if (process.env.CI === 'true') args.push('--no-sandbox');
   args.push('about:blank');
+  const chromeStderr = [];
   chromeProcess = spawn(chrome, args, { stdio: ['ignore', 'ignore', 'pipe'] });
-  chromeProcess.stderr.on('data', () => {});
+  chromeProcess.stderr.on('data', (chunk) => {
+    chromeStderr.push(String(chunk));
+    if (chromeStderr.length > 20) chromeStderr.shift();
+  });
 
-  const port = await devtoolsPort(userDataDir);
+  let port;
+  try {
+    port = await devtoolsPort(userDataDir);
+  } catch (error) {
+    throw new Error(`${error.message}; chrome stderr: ${chromeStderr.join('').slice(-1500)}`);
+  }
   cdp = await CDP.connect(await pageWebSocketUrl(port));
   cdp.on('Runtime.exceptionThrown', (params) => {
     exceptions.push(params.exceptionDetails?.exception?.description ?? params.exceptionDetails?.text ?? 'exception');
