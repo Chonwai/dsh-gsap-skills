@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>GSAP Skills for DeepSeek Harness — interactive demo</title>
+    <meta
+      name="description"
+      content="An interactive demo of the eight official GSAP skills packaged as an unofficial DeepSeek Harness bundle: hero timeline, scroll-revealed cards and a pinned, scroll-scrubbed strip."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="demo.css" />
+    <!-- Only hide the hero before GSAP runs when motion is allowed; demo.js
+         removes .js if the CDN is blocked, so content is never lost. -->
+    <script>
+      document.documentElement.classList.add('js');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('reduced');
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-nav">
+      <div class="container nav-inner">
+        <a class="wordmark" href="#main" aria-label="GSAP Skills for DeepSeek Harness, back to top">
+          <svg class="wordmark-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M3 19C7 6 17 6 21 19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+            <circle cx="3" cy="19" r="2.2" fill="currentColor" />
+            <circle cx="21" cy="19" r="2.2" fill="currentColor" />
+          </svg>
+          <span>dsh<span class="wordmark-dot" aria-hidden="true">·</span>gsap</span>
+        </a>
+        <nav class="nav-links" aria-label="Project links">
+          <a href="https://github.com/Chonwai/dsh-gsap-skills">GitHub</a>
+          <a href="https://github.com/Chonwai/dsh-gsap-skills/blob/main/docs/DISTRIBUTION.md">Install guide</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero container" aria-labelledby="hero-title">
+        <p class="eyebrow" data-hero-eyebrow>unofficial DeepSeek Harness bundle</p>
+        <h1 id="hero-title">
+          <span class="line-mask"><span class="line" data-hero-line>Eight GSAP skills.</span></span>
+          <span class="line-mask"><span class="line" data-hero-line>One install.</span></span>
+        </h1>
+        <p class="hero-sub" data-hero-sub>
+          core <span aria-hidden="true">·</span> timeline <span aria-hidden="true">·</span> ScrollTrigger
+          <span aria-hidden="true">·</span> plugins <span aria-hidden="true">·</span> utils
+          <span aria-hidden="true">·</span> react <span aria-hidden="true">·</span> frameworks
+          <span aria-hidden="true">·</span> performance
+        </p>
+        <p class="hero-lede" data-hero-sub>
+          The official GSAP skill documentation, vendored with four documented corrections and loadable as
+          runtime skills in DeepSeek Harness. This page is the demo: it is built with the same guidance.
+        </p>
+        <div class="hero-actions" data-hero-actions>
+          <a class="btn btn-primary" href="https://github.com/Chonwai/dsh-gsap-skills/blob/main/docs/DISTRIBUTION.md">
+            Install guide
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/Chonwai/dsh-gsap-skills">GitHub</a>
+        </div>
+        <ul class="hero-stats" data-hero-stats aria-label="Bundle at a glance">
+          <li><strong>8</strong><span>skills</span></li>
+          <li><strong>0</strong><span>runtime scripts</span></li>
+          <li><strong>90</strong><span>gate checks</span></li>
+          <li><strong>MIT</strong><span>skills licence</span></li>
+        </ul>
+      </section>
+
+      <section class="inside container" aria-labelledby="inside-title">
+        <div class="section-head">
+          <p class="eyebrow">what&rsquo;s inside</p>
+          <h2 id="inside-title">One skill for each part of the animation workflow.</h2>
+        </div>
+        <ul class="skill-grid">
+          <li class="skill-card">
+            <span class="skill-index" aria-hidden="true">01</span>
+            <h3>gsap-core</h3>
+            <p>Tweens, easing, stagger, defaults and <code>matchMedia</code> for reduced motion.</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-index" aria-hidden="true">02</span>
+            <h3>gsap-timeline</h3>
+            <p>Sequencing, labels and the position parameter (omitted means append at the end).</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-index" aria-hidden="true">03</span>
+            <h3>gsap-scrolltrigger</h3>
+            <p>Scroll-linked animation, pinning, scrub, batching and refresh/cleanup rules.</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-index" aria-hidden="true">04</span>
+            <h3>gsap-plugins</h3>
+            <p>Registration plus Flip, Draggable, ScrollSmoother, SplitText, SVG and eases.</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-index" aria-hidden="true">05</span>
+            <h3>gsap-utils</h3>
+            <p><code>clamp</code>, <code>mapRange</code>, <code>normalize</code>, <code>snap</code>,
+              <code>wrap</code>, <code>pipe</code> and friends.</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-index" aria-hidden="true">06</span>
+            <h3>gsap-react</h3>
+            <p><code>useGSAP</code>, refs, <code>gsap.context()</code> and cleanup on unmount.</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-index" aria-hidden="true">07</span>
+            <h3>gsap-frameworks</h3>
+            <p>Vue, Nuxt, Svelte and SvelteKit lifecycle and cleanup patterns.</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-index" aria-hidden="true">08</span>
+            <h3>gsap-performance</h3>
+            <p>Transforms over layout, avoiding thrashes, <code>will-change</code> and batching.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="pin-section" id="pin-section" aria-labelledby="pin-title">
+        <div class="pin-shell container">
+          <div class="pin-copy">
+            <p class="eyebrow">scroll-driven</p>
+            <h2 id="pin-title">Timeline &rarr; ScrollTrigger &rarr; Plugins.</h2>
+            <p class="pin-hint">Scroll to scrub the strip. The section is pinned; the track moves on <code>x</code> only.</p>
+            <div class="pin-progress" aria-hidden="true"><span class="pin-progress-bar" data-pin-progress></span></div>
+          </div>
+          <div class="pin-viewport">
+            <div class="pin-track" data-pin-track>
+              <article class="pin-step">
+                <span class="step-index" aria-hidden="true">01</span>
+                <h3>Timeline</h3>
+                <p>One master timeline owns the sequence, with defaults and labels instead of chained delays.</p>
+              </article>
+              <article class="pin-step">
+                <span class="step-index" aria-hidden="true">02</span>
+                <h3>ScrollTrigger</h3>
+                <p>Pin the section, scrub <code>1</code>, and use a function <code>end</code> plus
+                  <code>invalidateOnRefresh</code> so the distance recalculates.</p>
+              </article>
+              <article class="pin-step">
+                <span class="step-index" aria-hidden="true">03</span>
+                <h3>Plugins</h3>
+                <p>Register ScrollTrigger once. Batch the card reveals and clean up with
+                  <code>matchMedia().revert()</code>.</p>
+              </article>
+              <div class="pin-code">
+                <span class="code-label">the pattern used here</span>
+                <pre><code>const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".pin-section",
+    start: "top top",
+    end: () =&gt; "+=" + distance(),
+    pin: true,
+    scrub: 1,
+    invalidateOnRefresh: true,
+  },
+});
+
+tl.to(".pin-track", {
+  x: () =&gt; -distance(),
+  ease: "none",
+});</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>
+          Unofficial community bundle. Not affiliated with or endorsed by GreenSock or DeepSeek.
+          &ldquo;GSAP&rdquo; and &ldquo;GreenSock&rdquo; are trademarks of GreenSock, Inc.
+        </p>
+        <p>
+          Skill documentation is MIT (&copy; 2026 GreenSock). The GSAP library is free to use under
+          GreenSock&rsquo;s licence, is not MIT, and is not bundled here.
+        </p>
+        <p class="footer-meta">
+          <span>reduced-motion supported</span>
+          <span aria-hidden="true">·</span>
+          <a href="https://github.com/Chonwai/dsh-gsap-skills">github.com/Chonwai/dsh-gsap-skills</a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js"></script>
+    <script src="demo.js"></script>
+  </body>
+</html>

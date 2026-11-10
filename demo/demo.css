@@ -1,0 +1,584 @@
+/* GSAP Skills for DeepSeek Harness — demo styles.
+   Tokens follow the dark developer-tool system used for the bundle's docs. */
+
+:root {
+  /* colour */
+  --color-bg: #0f172a;
+  --color-card: #1b2336;
+  --color-muted: #272f42;
+  --color-border: #475569;
+  --color-fg: #f8fafc;
+  --color-fg-muted: #94a3b8;
+  --color-primary: #1e293b;
+  --color-accent: #22c55e;
+  --color-on-accent: #0f172a;
+
+  /* spacing scale 4 / 8 / 12 / 16 / 24 / 32 */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* type */
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --max-width: 1120px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(900px 520px at 82% -8%, rgba(34, 197, 94, 0.12), transparent 60%),
+    radial-gradient(700px 460px at 4% 8%, rgba(71, 85, 105, 0.22), transparent 62%),
+    var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--color-fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--space-1);
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--color-accent);
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-4);
+  z-index: 10;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+.container {
+  width: min(100% - var(--space-6), var(--max-width));
+  margin-inline: auto;
+}
+
+/* ── nav ─────────────────────────────────────────────────────────────── */
+
+.site-nav {
+  padding-block: var(--space-4);
+  border-bottom: 1px solid color-mix(in oklab, var(--color-border) 45%, transparent);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-fg);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.wordmark-mark {
+  width: 22px;
+  height: 22px;
+  color: var(--color-accent);
+}
+
+.wordmark-dot {
+  color: var(--color-accent);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.nav-links a {
+  color: var(--color-fg-muted);
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: var(--color-fg);
+}
+
+/* ── shared type ─────────────────────────────────────────────────────── */
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-mono);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+/* ── hero ────────────────────────────────────────────────────────────── */
+
+.hero {
+  padding-block: clamp(var(--space-7), 10vh, 128px) var(--space-8);
+}
+
+.hero h1 {
+  margin-block: var(--space-4) var(--space-5);
+  font-size: clamp(2.5rem, 6.4vw, 4.6rem);
+  font-weight: 700;
+  max-width: 16ch;
+}
+
+.line-mask {
+  display: block;
+  overflow: hidden;
+}
+
+.line {
+  display: block;
+}
+
+.hero-sub {
+  max-width: 62ch;
+  color: var(--color-fg-muted);
+  font-family: var(--font-mono);
+  font-size: clamp(0.78rem, 1.4vw, 0.92rem);
+  letter-spacing: 0.01em;
+}
+
+.hero-lede {
+  max-width: 56ch;
+  margin-top: var(--space-4);
+  color: var(--color-fg-muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: var(--space-3) var(--space-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition:
+    transform 160ms var(--ease-out),
+    background-color 160ms var(--ease-out),
+    border-color 160ms var(--ease-out),
+    color 160ms var(--ease-out);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.btn-primary:hover {
+  background: color-mix(in oklab, var(--color-accent) 86%, white);
+  color: var(--color-on-accent);
+}
+
+.btn-ghost {
+  border-color: var(--color-border);
+  color: var(--color-fg);
+  background: transparent;
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-fg-muted);
+  background: var(--color-muted);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid color-mix(in oklab, var(--color-border) 45%, transparent);
+}
+
+.hero-stats li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.hero-stats strong {
+  font-family: var(--font-mono);
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  line-height: 1;
+  color: var(--color-fg);
+}
+
+.hero-stats span {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-fg-muted);
+}
+
+/* Before GSAP runs, hide the hero only when motion is allowed. demo.js
+   removes .js when the CDN is unavailable, so the content always comes back. */
+.js:not(.reduced) [data-hero-eyebrow],
+.js:not(.reduced) [data-hero-line],
+.js:not(.reduced) [data-hero-sub],
+.js:not(.reduced) .hero-actions .btn,
+.js:not(.reduced) .hero-stats li {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* ── inside ──────────────────────────────────────────────────────────── */
+
+.inside {
+  padding-block: var(--space-8);
+}
+
+.section-head {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 34ch;
+  margin-bottom: var(--space-6);
+}
+
+.section-head h2 {
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  font-weight: 700;
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
+}
+
+.skill-card {
+  position: relative;
+  padding: var(--space-5);
+  background: linear-gradient(160deg, var(--color-card), color-mix(in oklab, var(--color-card) 78%, black));
+  border: 1px solid color-mix(in oklab, var(--color-border) 55%, transparent);
+  border-radius: var(--radius-md);
+  min-height: 176px;
+  transition: border-color 180ms var(--ease-out);
+}
+
+.skill-card:hover {
+  border-color: color-mix(in oklab, var(--color-accent) 55%, var(--color-border));
+}
+
+.skill-index {
+  display: block;
+  margin-bottom: var(--space-5);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--color-fg-muted);
+}
+
+.skill-card h3 {
+  margin-bottom: var(--space-2);
+  font-size: 1.02rem;
+}
+
+.skill-card p {
+  color: var(--color-fg-muted);
+  font-size: 0.9rem;
+}
+
+/* ── pinned strip ────────────────────────────────────────────────────── */
+
+.pin-section {
+  padding-block: var(--space-8);
+  border-block: 1px solid color-mix(in oklab, var(--color-border) 45%, transparent);
+  background:
+    radial-gradient(700px 340px at 20% 0%, rgba(34, 197, 94, 0.08), transparent 65%),
+    var(--color-bg);
+}
+
+.pin-shell {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.pin-copy {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 62ch;
+}
+
+.pin-copy h2 {
+  font-size: clamp(1.7rem, 3.6vw, 2.6rem);
+}
+
+.pin-hint {
+  color: var(--color-fg-muted);
+  font-size: 0.92rem;
+}
+
+.pin-progress {
+  width: min(100%, 320px);
+  height: 2px;
+  margin-top: var(--space-2);
+  background: var(--color-muted);
+  overflow: hidden;
+}
+
+.pin-progress-bar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.pin-viewport {
+  overflow: visible;
+}
+
+.pin-track {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.pin-step {
+  padding: var(--space-5);
+  background: var(--color-card);
+  border: 1px solid color-mix(in oklab, var(--color-border) 55%, transparent);
+  border-radius: var(--radius-md);
+}
+
+.step-index {
+  display: block;
+  margin-bottom: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+}
+
+.pin-step h3 {
+  margin-bottom: var(--space-2);
+  font-size: 1.05rem;
+}
+
+.pin-step p {
+  color: var(--color-fg-muted);
+  font-size: 0.9rem;
+}
+
+.pin-code {
+  grid-column: 1 / -1;
+  padding: var(--space-5);
+  background: #0b1220;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.code-label {
+  display: block;
+  margin-bottom: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-fg-muted);
+}
+
+.pin-code pre {
+  margin: 0;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: var(--color-fg);
+}
+
+/* Only when ScrollTrigger is active: the section becomes a pinned horizontal
+   strip. Without JS/GSAP the grid above stays static, readable and complete. */
+.anim-ready .pin-section {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  padding-block: var(--space-6);
+}
+
+.anim-ready .pin-viewport {
+  overflow: hidden;
+}
+
+.anim-ready .pin-track {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  gap: var(--space-5);
+}
+
+.anim-ready .pin-step {
+  width: min(420px, 72vw);
+  flex: 0 0 auto;
+}
+
+.anim-ready .pin-code {
+  width: min(520px, 82vw);
+  flex: 0 0 auto;
+  grid-column: auto;
+}
+
+/* ── footer ──────────────────────────────────────────────────────────── */
+
+.site-footer {
+  padding-block: var(--space-7);
+  border-top: 1px solid color-mix(in oklab, var(--color-border) 45%, transparent);
+}
+
+.footer-inner {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 78ch;
+  color: var(--color-fg-muted);
+  font-size: 0.85rem;
+}
+
+.footer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── responsive ──────────────────────────────────────────────────────── */
+
+@media (max-width: 720px) {
+  .hero-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pin-track {
+    grid-template-columns: 1fr;
+  }
+
+  .anim-ready .pin-section {
+    min-height: auto;
+    display: block;
+  }
+
+  .anim-ready .pin-viewport {
+    overflow-x: auto;
+    padding-bottom: var(--space-2);
+  }
+
+  .anim-ready .pin-track {
+    flex-wrap: nowrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+}
