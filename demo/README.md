@@ -37,6 +37,35 @@ browser file restrictions.
 - **Cleanup:** the animations live in `gsap.matchMedia()` contexts; teardown
   reverts them, kills the pin, and refreshes ScrollTrigger after fonts settle.
 
+## Automated checks
+
+Run from the repository root:
+
+```bash
+npm run smoke:demo        # real headless Chrome over CDP (tests/demo-smoke.mjs)
+npm run prompt-contract   # deterministic static contract on demo/ (tests/prompt-contract.mjs)
+```
+
+- **`smoke:demo`** serves this directory with `node:http`, launches headless
+  Chrome, and drives it over the DevTools Protocol. It asserts: GSAP loads and
+  the hero animates in with no uncaught exceptions; the eight cards reveal on
+  scroll; the pinned strip stays at the top, its track moves monotonically
+  negative, the progress bar grows to ~1 and the section releases; reduced
+  motion creates zero ScrollTriggers and leaves content visible; with the CDN
+  and fonts blocked there is no GSAP but all content stays visible; mobile
+  390x844 has no horizontal overflow, no pin, and revealing cards.
+  It looks for `$CHROME_BIN`, macOS Google Chrome, then `google-chrome` /
+  `chromium` / `chromium-browser`. If none is found it prints
+  `demo-smoke: SKIP (no Chrome found)` and exits 0 — **SKIP is not
+  verification.** CI's `ubuntu-latest` runners include Chrome, so CI runs it for
+  real; a local machine without Chrome only skips.
+- **`prompt-contract`** statically checks `demo/` (and any path you pass) for
+  layout-property animation, missing `prefers-reduced-motion`/`matchMedia`,
+  ScrollTrigger without `registerPlugin`, missing cleanup, and warns on
+  `opacity:` without `autoAlpha`. It is deterministic, needs no browser, and is
+  documented in [`PROMPTS.md`](PROMPTS.md). It does not prove visual quality;
+  the browser smoke covers the rendered demo.
+
 ## Files
 
 | File | Purpose |
@@ -44,6 +73,7 @@ browser file restrictions.
 | `index.html` | Page structure and content (semantic sections, inline SVG mark) |
 | `demo.css` | Design tokens (`--color-*`, 4/8/12/16/24/32 spacing), layout, static fallbacks |
 | `demo.js` | GSAP timelines, `ScrollTrigger.batch`, the pinned strip, reduced-motion/no-GSAP guards |
+| `PROMPTS.md` | Six prompt contracts and the checker heuristics for demo/GIF output |
 | `README.md` | This file |
 
 The screenshot referenced from the top-level README is committed at

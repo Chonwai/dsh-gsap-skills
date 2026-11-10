@@ -214,9 +214,18 @@ Series conventions: [docs/SERIES.md](docs/SERIES.md).
 ```bash
 npm test                  # offline gate; prints RESULT: PASS
 npm run check             # node --check lib/, tests/, tools/
-npm run smoke             # host + optional registry smoke
+npm run smoke             # host + optional registry + demo browser smoke
+npm run smoke:demo        # headless Chrome demo smoke (SKIP if no Chrome)
+npm run prompt-contract   # deterministic static contract on demo/
 npm run corrections-check # verify the four corrections in the vendored tree
 ```
+
+`smoke:demo` needs a local Chrome/Chromium plus network for the pinned CDN; when
+no Chrome is found it prints `SKIP` and exits 0 — **SKIP is not verification**.
+CI's `ubuntu-latest` runners include Chrome and run the demo smoke for real.
+`prompt-contract` is deterministic and needs no browser; see
+[`demo/PROMPTS.md`](demo/PROMPTS.md) for the six prompt contracts and the
+checker heuristics.
 
 Re-vendoring (deterministic, idempotent):
 

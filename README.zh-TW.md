@@ -199,9 +199,16 @@ watcher 在下一個 pre-step 接手（移除本身不需要重啟）；但**安
 ```bash
 npm test                  # offline 閘門，最後印 RESULT: PASS
 npm run check             # node --check lib/、tests/、tools/
-npm run smoke             # host + 選用 registry smoke
+npm run smoke             # host + 選用 registry + demo 瀏覽器 smoke
+npm run smoke:demo        # headless Chrome demo smoke（沒有 Chrome 時 SKIP）
+npm run prompt-contract   # demo/ 的決定性靜態 contract 檢查
 npm run corrections-check # 檢查 vendored tree 的 4 項更正
 ```
+
+`smoke:demo` 需要本機 Chrome/Chromium 與 pinned CDN 的網路；找不到 Chrome 時會
+印 `SKIP` 並 exit 0——**SKIP 不算驗證**。CI 的 `ubuntu-latest` runner 內建 Chrome，
+會真的執行 demo smoke。`prompt-contract` 是決定性、不需要瀏覽器的靜態檢查；六個
+prompt contract 與檢查規則見 [`demo/PROMPTS.md`](demo/PROMPTS.md)。
 
 重新 vendor（決定性、可重複）：
 
