@@ -4,6 +4,26 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2026-11-11
+
+### Added
+
+- `demo/`: a self-contained interactive demo (hero timeline, scroll-revealed
+  skill cards, pinned scroll-scrubbed strip) written against the vendored
+  `gsap-core`, `gsap-timeline` and `gsap-scrolltrigger` guidance. It uses
+  transform aliases and `autoAlpha`, `ScrollTrigger.batch`, a pinned top-level
+  timeline with `scrub`/`invalidateOnRefresh`, and `gsap.matchMedia()` for
+  `prefers-reduced-motion`; if the CDN or ScrollTrigger is unavailable the page
+  degrades to static, readable content with no errors. `demo/README.md`
+  explains how to run it locally.
+- `assets/demo.png`: a 1440px screenshot of the demo, linked from the README.
+- `package.json` `files` now includes `demo` and `assets`.
+
+### Changed (documentation)
+
+- Install pins in `docs/DISTRIBUTION.md` and both READMEs now point at
+  `#v1.0.3`; the release-check tarball now also carries the demo.
+
 ## [1.0.2] - 2026-11-10
 
 ### Fixed (documentation and release tooling)

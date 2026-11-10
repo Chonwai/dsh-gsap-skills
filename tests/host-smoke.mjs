@@ -248,7 +248,7 @@ await check('mutation: an un-applied correction fails the correction gate', () =
 await check('module surface matches the v1 contract (no Config export)', async () => {
   const module = await import('../lib/index.js');
   assert.equal(pluginName, 'gsap');
-  assert.equal(pluginVersion, '1.0.2');
+  assert.equal(pluginVersion, '1.0.3');
   assert.deepEqual(SKILL_NAMES, [
     'gsap-core',
     'gsap-timeline',
