@@ -70,8 +70,8 @@ a DSH restart because profile bundle rows compose at host boot.
 
 - [`@chonwai/dsh-rein`](https://github.com/Chonwai/dsh-rein) — Ponytail skills
   plus a scoped always-on ruleset and a composer pill. Public, released.
-- `@chonwai/dsh-uupm` — UI/UX Pro Max design-intelligence skill with its data
-  and Python search scripts. Local-only for now (not yet public), same
-  conventions and the same layer-first caveat.
+- [`@chonwai/dsh-uupm`](https://github.com/Chonwai/dsh-uupm) — UI/UX Pro Max
+  design-intelligence skill with its data and Python search scripts. Public and
+  released (v1.0.3), same conventions and the same layer-first caveat.
 - `@chonwai/dsh-gsap-skills` — this package: the eight official GSAP skills,
   four documented corrections.

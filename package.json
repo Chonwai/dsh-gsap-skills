@@ -1,6 +1,6 @@
 {
   "name": "@chonwai/dsh-gsap-skills",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": true,
   "description": "GreenSock's official GSAP skills packaged as an unofficial DeepSeek Harness bundle (eight skills, no runtime scripts).",
   "license": "MIT",

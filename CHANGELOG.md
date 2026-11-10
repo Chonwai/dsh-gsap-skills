@@ -4,6 +4,29 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.5] - 2026-11-11
+
+### Added
+
+- `tests/demo-smoke.mjs`: a zero-dependency, real-browser smoke test for the
+  demo (headless Chrome over CDP, Node built-ins only). It asserts the hero
+  entrance, scroll-revealed cards, the pinned/scrubbed strip, reduced-motion
+  behaviour, the blocked-CDN fallback and the mobile layout, and prints
+  `SKIP` (exit 0) when no Chrome is available. Wired into CI.
+- `tests/prompt-contract.mjs` and `demo/PROMPTS.md`: six copy-paste prompts for
+  generating demo/GIF material in a fresh session, plus a deterministic checker
+  for the invariants those prompts must satisfy (no layout-property animation,
+  reduced-motion handling, ScrollTrigger registration, cleanup, and an
+  `autoAlpha` warning).
+- `npm run smoke:demo` and `npm run prompt-contract`; `npm run smoke` now
+  includes the demo smoke.
+
+### Changed
+
+- `docs/SERIES.md` links the now-public `@chonwai/dsh-uupm` repository.
+- README (both languages) documents the new verification commands and their
+  limits (Chrome-only smoke; SKIP is not verification).
+
 ## [1.0.4] - 2026-11-11
 
 ### Fixed (demo and documentation)
