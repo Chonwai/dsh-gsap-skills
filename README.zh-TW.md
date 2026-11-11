@@ -21,7 +21,7 @@ row；因此 `~/.agents/skills`、`$DSH_HOME/skills` 或專案 `.agents/skills` 
 ## Quick start
 
 在 **Plugins → Add plugin → Install a third-party plugin** 貼上
-`https://github.com/Chonwai/dsh-gsap-skills#v1.0.6`，按 **Enable now**，然後
+`https://github.com/Chonwai/dsh-gsap-skills#v1.0.7`，按 **Enable now**，然後
 **重啟 DSH**、開新 session，載入 `/gsap-core`。其他安裝通道（release tarball、
 agent／`plugin_manager`、未來 npm）、驗證方式、layer 遷移與疑難排解：
 [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md)。

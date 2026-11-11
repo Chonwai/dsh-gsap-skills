@@ -15,7 +15,7 @@ each project installs GSAP separately under GreenSock's license.
 |---|---|
 | `npm pack` tarball completeness and gates (`npm test`, host/registry smoke, checksums) run from an extracted package | the actual **Plugins-page UI flow** (dialog, trust box, Enable now) — documented as expected UI behavior, not end-to-end re-tested in this repo |
 | the real DSH `parseInstallSpec` accepting the documented forms (and rejecting tree URLs / relative paths) | installing into a managed DSH profile — no profile was installed during release verification |
-| `npm install github:…#v1.0.6` resolving the tag to the right commit | the npm registry channel (the package is `private`) |
+| `npm install github:…#v1.0.7` resolving the tag to the right commit | the npm registry channel (the package is `private`) |
 | version/checksums/release consistency via `tools/check-release.sh` | GSAP runtime animation behavior (the bundle ships docs, not the library) |
 
 ## 1. Prerequisites
@@ -44,9 +44,9 @@ fragment is allowed on hosted git URLs and shorthand specs):
 | absolute local directory | `/Users/you/dsh-gsap-skills` |
 | absolute local tarball | `/Users/you/Downloads/dsh-gsap-skills-1.0.7.tgz` |
 | http(s) tarball | `https://example.com/dsh-gsap-skills-1.0.7.tgz` |
-| git shorthand + tag | `github:Chonwai/dsh-gsap-skills#v1.0.6` |
-| git URL | `git+https://github.com/Chonwai/dsh-gsap-skills.git#v1.0.6` |
-| hosted repository URL + tag | `https://github.com/Chonwai/dsh-gsap-skills#v1.0.6` |
+| git shorthand + tag | `github:Chonwai/dsh-gsap-skills#v1.0.7` |
+| git URL | `git+https://github.com/Chonwai/dsh-gsap-skills.git#v1.0.7` |
+| hosted repository URL + tag | `https://github.com/Chonwai/dsh-gsap-skills#v1.0.7` |
 | npm package name (future) | `@chonwai/dsh-gsap-skills@1.0.7` |
 
 Pinning a tag is strongly recommended: branches move, tags do not. The forms
@@ -61,13 +61,13 @@ common:
 - A GitHub **tree URL** — `https://github.com/Chonwai/dsh-gsap-skills/tree/main`
   or `…/tree/v1.0.6` — is refused with
   `a URL must point at a git repository or a tarball`. Use the **repo-root**
-  URL plus the tag: `https://github.com/Chonwai/dsh-gsap-skills#v1.0.6`.
+  URL plus the tag: `https://github.com/Chonwai/dsh-gsap-skills#v1.0.7`.
 - A **relative path** — `./x`, `../x`, `file:./x` — is refused with
   `a local path must be absolute`. Use an absolute directory or `.tgz` path
   (`/Users/you/...`).
 
-`github:Chonwai/dsh-gsap-skills#v1.0.6` and
-`git+https://github.com/Chonwai/dsh-gsap-skills.git#v1.0.6` are accepted
+`github:Chonwai/dsh-gsap-skills#v1.0.7` and
+`git+https://github.com/Chonwai/dsh-gsap-skills.git#v1.0.7` are accepted
 alternatives to the hosted URL.
 
 ## 3. Channel 1 — Plugins page (recommended for friends)
@@ -75,8 +75,8 @@ alternatives to the hosted URL.
 1. Open **DSH → Plugins** in the sidebar.
 2. **Add plugin** → **Install a third-party plugin**.
 3. Paste the pinned spec:
-   `https://github.com/Chonwai/dsh-gsap-skills#v1.0.6`
-   (or `github:Chonwai/dsh-gsap-skills#v1.0.6`).
+   `https://github.com/Chonwai/dsh-gsap-skills#v1.0.7`
+   (or `github:Chonwai/dsh-gsap-skills#v1.0.7`).
 4. Read the trust box and confirm. DSH clones the tag, adds the profile
    dependency and bundle row, and enables the bundle.
 5. If the dialog offers **Enable now**, accept it.
@@ -96,7 +96,7 @@ credentials.
 From a session with Full access (or an approval prompt you can answer):
 
 ```
-plugin_manager(action: "install_bundle", target: "https://github.com/Chonwai/dsh-gsap-skills#v1.0.6")
+plugin_manager(action: "install_bundle", target: "https://github.com/Chonwai/dsh-gsap-skills#v1.0.7")
 ```
 
 The same absolute-path, tarball-URL or git forms are accepted. The returned
@@ -210,7 +210,7 @@ package deletes or edits those copies for you.
 ```
 GSAP skills for DeepSeek Harness — unofficial bundle, 8 skills:
 https://github.com/Chonwai/dsh-gsap-skills
-DSH → Plugins → Add plugin → Install a third-party plugin → paste https://github.com/Chonwai/dsh-gsap-skills#v1.0.6
+DSH → Plugins → Add plugin → Install a third-party plugin → paste https://github.com/Chonwai/dsh-gsap-skills#v1.0.7
 Read the trust box and confirm, choose Enable now, restart DSH, then load /gsap-core.
 If skills don't appear: move ~/.agents/skills/gsap-* (and $DSH_HOME/skills, project .agents/skills) out of the skills root.
 ```
