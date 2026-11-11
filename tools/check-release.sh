@@ -124,4 +124,13 @@ for doc in README.md README.zh-TW.md docs/DISTRIBUTION.md; do
 done
 ok "install docs pin #v${VERSION} and carry no stale tag pins"
 
+for doc in README.md INSTALL.md docs/DISTRIBUTION.md; do
+  [ -f "$doc" ] || continue
+  stale_tar="$(grep -oE 'dsh-gsap-skills-[0-9]+\.[0-9]+\.[0-9]+\.tgz' "$doc" | grep -vxF "dsh-gsap-skills-${VERSION}.tgz" | sort -u | tr '\n' ' ' || true)"
+  [ -z "$stale_tar" ] || fail "$doc names a stale release tarball: ${stale_tar}"
+  stale_pkg="$(grep -oE '@chonwai/dsh-gsap-skills@[0-9]+\.[0-9]+\.[0-9]+' "$doc" | grep -vxF "@chonwai/dsh-gsap-skills@${VERSION}" | sort -u | tr '\n' ' ' || true)"
+  [ -z "$stale_pkg" ] || fail "$doc names a stale npm package version: ${stale_pkg}"
+done
+ok "install docs name the current tarball and npm package version"
+
 echo "RESULT: PASS (release ${TAG} is consistent)"
