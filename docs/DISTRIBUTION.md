@@ -42,12 +42,12 @@ fragment is allowed on hosted git URLs and shorthand specs):
 | Form | Example |
 |---|---|
 | absolute local directory | `/Users/you/dsh-gsap-skills` |
-| absolute local tarball | `/Users/you/Downloads/dsh-gsap-skills-1.0.4.tgz` |
-| http(s) tarball | `https://example.com/dsh-gsap-skills-1.0.4.tgz` |
+| absolute local tarball | `/Users/you/Downloads/dsh-gsap-skills-1.0.7.tgz` |
+| http(s) tarball | `https://example.com/dsh-gsap-skills-1.0.7.tgz` |
 | git shorthand + tag | `github:Chonwai/dsh-gsap-skills#v1.0.6` |
 | git URL | `git+https://github.com/Chonwai/dsh-gsap-skills.git#v1.0.6` |
 | hosted repository URL + tag | `https://github.com/Chonwai/dsh-gsap-skills#v1.0.6` |
-| npm package name (future) | `@chonwai/dsh-gsap-skills@1.0.4` |
+| npm package name (future) | `@chonwai/dsh-gsap-skills@1.0.7` |
 
 Pinning a tag is strongly recommended: branches move, tags do not. The forms
 above are equivalent; the hosted URL is the friendliest to paste into the
@@ -105,14 +105,14 @@ host mounted the row — restart DSH before expecting the skills.
 
 ## 5. Channel 3 — offline tarball
 
-Download `dsh-gsap-skills-1.0.4.tgz` from the GitHub release, then verify and
-install it (`npm pack` names the same bytes `chonwai-dsh-gsap-skills-1.0.4.tgz`;
+Download `dsh-gsap-skills-1.0.7.tgz` from the GitHub release, then verify and
+install it (`npm pack` names the same bytes `chonwai-dsh-gsap-skills-1.0.7.tgz`;
 the release asset is renamed):
 
 ```bash
-shasum -a 256 -c dsh-gsap-skills-1.0.4.tgz.sha256
+shasum -a 256 -c dsh-gsap-skills-1.0.7.tgz.sha256
 # then, in the Plugins dialog, paste the absolute path to the .tgz:
-#   /Users/you/Downloads/dsh-gsap-skills-1.0.4.tgz
+#   /Users/you/Downloads/dsh-gsap-skills-1.0.7.tgz
 ```
 
 `plugin_manager` accepts the same absolute tarball path. An extracted directory
@@ -131,7 +131,7 @@ registry channel is **not available yet**. If the maintainer later publishes it:
 npm publish --access public        # after flipping private -> false for that release
 
 # friend
-plugin_manager(action: "install_bundle", target: "@chonwai/dsh-gsap-skills@1.0.4")
+plugin_manager(action: "install_bundle", target: "@chonwai/dsh-gsap-skills@1.0.7")
 ```
 
 Publishing is a deliberate human step; do not assume a registry name exists
