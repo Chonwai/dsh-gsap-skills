@@ -115,4 +115,13 @@ console.log(`PASS  npm pack includes all ${required.length} required files (${pa
 JS
 ok "npm tarball would contain the runtime, docs, tests and metadata"
 
+# Install docs must pin the current tag and carry no stale tag pins.
+for doc in README.md README.zh-TW.md docs/DISTRIBUTION.md; do
+  [ -f "$doc" ] || continue
+  grep -qF "#v${VERSION}" "$doc" || fail "$doc does not pin #v${VERSION}"
+  stale="$(grep -oE '#v[0-9]+\.[0-9]+\.[0-9]+' "$doc" | grep -vxF "#v${VERSION}" | sort -u | tr '\n' ' ' || true)"
+  [ -z "$stale" ] || fail "$doc has stale install pins: ${stale}"
+done
+ok "install docs pin #v${VERSION} and carry no stale tag pins"
+
 echo "RESULT: PASS (release ${TAG} is consistent)"
