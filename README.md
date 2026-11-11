@@ -25,7 +25,7 @@ copy exists.
 ## Quick start
 
 Install from **Plugins → Add plugin → Install a third-party plugin** with
-`https://github.com/Chonwai/dsh-gsap-skills#v1.0.4`, accept **Enable now**, then
+`https://github.com/Chonwai/dsh-gsap-skills#v1.0.6`, accept **Enable now**, then
 **restart DSH** and open a session; load `/gsap-core`. Other channels (release
 tarball, agent/`plugin_manager`, future npm), verification, layer migration and
 troubleshooting: [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md).
