@@ -75,7 +75,7 @@ for field in name version description license author type main exports icon file
   if [ "$(manifest "$field")" = "yes" ]; then ok "package.json has $field"; else bad "package.json is missing $field"; fi
 done
 [ "$(manifest_value name)" = "@chonwai/dsh-gsap-skills" ] && ok "package name is @chonwai/dsh-gsap-skills" || bad "package name is wrong"
-[ "$(manifest_value version)" = "1.0.6" ] && ok "package version is 1.0.6" || bad "package version is not 1.0.6"
+[ "$(manifest_value version)" = "1.0.7" ] && ok "package version is 1.0.7" || bad "package version is not 1.0.7"
 lib_version=$(grep -oE "export const version = '[^']+'" lib/index.js | sed -E "s/.*'([^']+)'/\1/")
 [ "$lib_version" = "$(manifest_value version)" ] && ok "lib/index.js version matches package.json" || bad "lib/index.js version (${lib_version:-missing}) does not match package.json"
 [ "$(manifest_value license)" = "MIT" ] && ok "package license is MIT" || bad "package license is not MIT"

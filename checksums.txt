@@ -1,4 +1,4 @@
-# sha256 pins for the vendored files of @chonwai/dsh-gsap-skills 1.0.6
+# sha256 pins for the vendored files of @chonwai/dsh-gsap-skills 1.0.7
 # Upstream: GSAP skills, MIT (https://github.com/greensock/gsap-skills)
 # Pinned commit: provenance.json / NOTICE. Regenerate: bash tools/vendor-upstream.sh <git-ref> --repo <checkout>
 e81ce279d460a3125b598787e133c8ce0700c2b33f01e18a31813241e0b925b8  skills/gsap-core/SKILL.md
