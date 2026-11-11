@@ -4,6 +4,16 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.6] - 2026-11-11
+
+### Fixed
+
+- Every install pin in `README.md`, `README.zh-TW.md` and `docs/DISTRIBUTION.md`
+  now points at `#v1.0.6`; they had lagged one release behind (v1.0.4).
+- `docs/SERIES.md` names the current `@chonwai/dsh-uupm` release (v1.0.4).
+- `tools/check-release.sh` now fails when a primary install document pins a
+  stale tag or does not pin the current one, so this cannot regress.
+
 ## [1.0.5] - 2026-11-11
 
 ### Added
