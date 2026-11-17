@@ -4,6 +4,18 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.9] - 2026-11-18
+
+### Fixed
+
+- The Traditional Chinese INSTALL guide now links the Traditional Chinese
+  DISTRIBUTION guide instead of the Simplified Chinese one.
+- Traditional Chinese terminology and prose were revised for Taiwan usage
+  (permissions, reload, library, sample, paste, verify, clone, return), and the
+  Traditional Chinese README gained the missing upstream hyperlink and localized
+  quick-start/demo headings.
+- Install pins moved to v1.0.9; the runtime and the eight skills are unchanged.
+
 ## [1.0.8] - 2026-11-18
 
 ### Added
