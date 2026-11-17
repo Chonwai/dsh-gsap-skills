@@ -1,3 +1,7 @@
+[English](DISTRIBUTION.md) · [繁體中文](DISTRIBUTION.zh-TW.md) · [简体中文](DISTRIBUTION.zh-CN.md)
+
+> This is the English original. Translations are provided for convenience; the English text is canonical.
+
 # Installing and distributing `@chonwai/dsh-gsap-skills`
 
 A friend-facing guide to the four supported ways to install this DeepSeek Harness

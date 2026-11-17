@@ -1,3 +1,7 @@
+[English](INSTALL.md) · [繁體中文](INSTALL.zh-TW.md) · [简体中文](INSTALL.zh-CN.md)
+
+> This is the English original. Translations are provided for convenience; the English text is canonical.
+
 # INSTALL — @chonwai/dsh-gsap-skills
 
 DeepSeek Harness (DSH) bundle installation, activation, migration, verification,
