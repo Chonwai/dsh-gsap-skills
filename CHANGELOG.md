@@ -4,6 +4,22 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.8] - 2026-11-18
+
+### Added
+
+- Trilingual documentation. README, INSTALL and DISTRIBUTION now exist in
+  English, Traditional Chinese (zh-TW) and Simplified Chinese (zh-CN), each with
+  a language switcher; all versions carry the same install pins and code
+  samples. The English text remains canonical.
+- tools/check-release.sh now verifies that all nine documents exist, cross-link
+  each other, and pin only the current release tag, tarball and npm version.
+
+### Changed
+
+- Install pins moved to v1.0.8; nothing in the runtime or the eight skills
+  changed.
+
 ## [1.0.7] - 2026-11-11
 
 ### Fixed
