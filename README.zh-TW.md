@@ -1,3 +1,7 @@
+[English](README.md) · [繁體中文](README.zh-TW.md) · [简体中文](README.zh-CN.md)
+
+> 本文件是英文版的翻譯；英文版為準。
+
 # GSAP Skills for DeepSeek Harness
 
 **`@chonwai/dsh-gsap-skills`** 把 GSAP 官方 8 個 skill 打包成 DeepSeek Harness
@@ -24,7 +28,7 @@ row；因此 `~/.agents/skills`、`$DSH_HOME/skills` 或專案 `.agents/skills` 
 `https://github.com/Chonwai/dsh-gsap-skills#v1.0.7`，按 **Enable now**，然後
 **重啟 DSH**、開新 session，載入 `/gsap-core`。其他安裝通道（release tarball、
 agent／`plugin_manager`、未來 npm）、驗證方式、layer 遷移與疑難排解：
-[docs/DISTRIBUTION.md](docs/DISTRIBUTION.md)。
+[docs/DISTRIBUTION.md](docs/DISTRIBUTION.zh-TW.md)。
 
 ## Demo
 
@@ -88,7 +92,7 @@ settings/Config schema、沒有 system prompt 區段、沒有 telemetry、沒有
 
 ## 安裝
 
-三種方式都寫在 [INSTALL.md](INSTALL.md)：
+三種方式都寫在 [INSTALL.md](INSTALL.zh-TW.md)：
 
 1. **Plugins 頁（建議）**：Plugins → Add plugin → 安裝第三方外掛 → 貼上這個
    目錄的絕對路徑。
@@ -197,12 +201,12 @@ watcher 在下一個 pre-step 接手（移除本身不需要重啟）；但**安
 ## 開發
 
 ```bash
-npm test                  # offline 閘門，最後印 RESULT: PASS
-npm run check             # node --check lib/、tests/、tools/
-npm run smoke             # host + 選用 registry + demo 瀏覽器 smoke
-npm run smoke:demo        # headless Chrome demo smoke（沒有 Chrome 時 SKIP）
-npm run prompt-contract   # demo/ 的決定性靜態 contract 檢查
-npm run corrections-check # 檢查 vendored tree 的 4 項更正
+npm test                  # offline gate; prints RESULT: PASS
+npm run check             # node --check lib/, tests/, tools/
+npm run smoke             # host + optional registry + demo browser smoke
+npm run smoke:demo        # headless Chrome demo smoke (SKIP if no Chrome)
+npm run prompt-contract   # deterministic static contract on demo/
+npm run corrections-check # verify the four corrections in the vendored tree
 ```
 
 `smoke:demo` 需要本機 Chrome/Chromium 與 pinned CDN 的網路；找不到 Chrome 時會
@@ -215,7 +219,7 @@ prompt contract 與檢查規則見 [`demo/PROMPTS.md`](demo/PROMPTS.md)。
 ```bash
 bash tools/vendor-upstream.sh aed9cfd3277740755f6bfc1155c7aa645403b760 \
   --repo /path/to/gsap-skills
-# 或直接從既有 checkout：
+# or from an existing checkout:
 bash tools/vendor-upstream.sh --from-dir /path/to/gsap-skills \
   --ref aed9cfd3277740755f6bfc1155c7aa645403b760
 ```
@@ -228,22 +232,22 @@ offline 閘門會失敗。沒有 build step。
 ## 目錄結構
 
 ```
-lib/index.js                 host half：讀取、解析、註冊、釋放
-cordis.patch.yml             單一 insert row：id gsap -> @chonwai/dsh-gsap-skills
-skills/gsap-*/SKILL.md       8 個 vendored skills（已套用 4 項更正）
-skills/llms.txt              上游 skill 索引
-locale/{en,zh}.json          Plugins 頁標題／說明／詳情檔
-icon.svg                     原創 motion/timeline 圖示
-checksums.txt                9 個 vendored 檔案的 sha256 釘選
-provenance.json              上游 URL、完整 commit、4 項更正
-tools/vendor-upstream.sh     重新 vendor + 更正 + checksums + provenance + 測試
-tools/apply-corrections.mjs  fail-loud 的 4 項更正腳本
-docs/KNOWN-UPSTREAM-ISSUES.md  原文引述、更正、issue 連結、未修補缺口
-docs/SERIES.md               系列命名與驗證慣例
-patches/README.md            為什麼更正是程式碼而不是 diff 檔
-tests/offline-check.sh       靜態驗收閘門
-tests/host-smoke.mjs         以假 Cordis context 測 host half
-tests/registry-smoke.mjs     選用：真實 dsh-skill registry 測試
+lib/index.js                 host half: read, parse, register, dispose
+cordis.patch.yml             one insert row: id gsap -> @chonwai/dsh-gsap-skills
+skills/gsap-*/SKILL.md       the eight vendored skills (four corrections applied)
+skills/llms.txt              upstream skill index
+locale/{en,zh}.json          plugin-page title/description/detail
+icon.svg                     original motion/timeline glyph
+checksums.txt                sha256 pins for the nine vendored files
+provenance.json              upstream URL, full commit, four corrections
+tools/vendor-upstream.sh     re-vendor + correct + checksums + provenance + tests
+tools/apply-corrections.mjs  the fail-loud four-correction script
+docs/KNOWN-UPSTREAM-ISSUES.md  quotes, corrections, issue links, documented gaps
+docs/SERIES.md               series naming and verification conventions
+patches/README.md            why corrections are code, not diff files
+tests/offline-check.sh       static acceptance gate
+tests/host-smoke.mjs         fake-Cordis mount test
+tests/registry-smoke.mjs     optional real dsh-skill registry test
 ```
 
 ## 授權與署名
