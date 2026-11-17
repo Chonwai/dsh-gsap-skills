@@ -18,7 +18,7 @@ MIT**——每个项目要按 GreenSock 的授权自行安装 GSAP。
 |---|---|
 | 从解包后的套件跑 `npm pack` tarball 完整性与各道闸门（`npm test`、host/registry smoke、checksums） | 实际的 **Plugins 页 UI 流程**（对话框、信任确认框、Enable now）——本文只按预期 UI 行为记录，本 repo 没有端到端重测 |
 | 真实 DSH 的 `parseInstallSpec` 接受文中列出的形式（并拒绝 tree URL／相对路径） | 安装到受管理的 DSH profile——release 验证时没有安装任何 profile |
-| `npm install github:…#v1.0.7` 能把 tag 解析到正确的 commit | npm registry 通道（本套件是 `private`） |
+| `npm install github:…#v1.0.8` 能把 tag 解析到正确的 commit | npm registry 通道（本套件是 `private`） |
 | 用 `tools/check-release.sh` 检查 version／checksums／release 一致性 | GSAP runtime 动画行为（本 bundle 只随附文档，不是库） |
 
 ## 1. 前置条件
@@ -44,12 +44,12 @@ install-spec 解析器验证过；hosted git URL 与 shorthand spec 允许带
 | 形式 | 示例 |
 |---|---|
 | 本地绝对目录 | `/Users/you/dsh-gsap-skills` |
-| 本地绝对路径 tarball | `/Users/you/Downloads/dsh-gsap-skills-1.0.7.tgz` |
-| http(s) tarball | `https://example.com/dsh-gsap-skills-1.0.7.tgz` |
-| git shorthand + tag | `github:Chonwai/dsh-gsap-skills#v1.0.7` |
-| git URL | `git+https://github.com/Chonwai/dsh-gsap-skills.git#v1.0.7` |
-| hosted repository URL + tag | `https://github.com/Chonwai/dsh-gsap-skills#v1.0.7` |
-| npm 包名（未来） | `@chonwai/dsh-gsap-skills@1.0.7` |
+| 本地绝对路径 tarball | `/Users/you/Downloads/dsh-gsap-skills-1.0.8.tgz` |
+| http(s) tarball | `https://example.com/dsh-gsap-skills-1.0.8.tgz` |
+| git shorthand + tag | `github:Chonwai/dsh-gsap-skills#v1.0.8` |
+| git URL | `git+https://github.com/Chonwai/dsh-gsap-skills.git#v1.0.8` |
+| hosted repository URL + tag | `https://github.com/Chonwai/dsh-gsap-skills#v1.0.8` |
+| npm 包名（未来） | `@chonwai/dsh-gsap-skills@1.0.8` |
 
 强烈建议钉住 tag：branch 会移动，tag 不会。上面这些形式是等价的；hosted URL
 最适合粘进对话框。
@@ -61,13 +61,13 @@ Plugin Manager 会在 pnpm 看到 spec 之前先校验。常见失败有两种�
 - GitHub **tree URL**——`https://github.com/Chonwai/dsh-gsap-skills/tree/main`
   或 `…/tree/v1.0.6`——会被拒绝，错误是
   `a URL must point at a git repository or a tarball`。请用 **repo 根** URL 加
-  tag：`https://github.com/Chonwai/dsh-gsap-skills#v1.0.7`。
+  tag：`https://github.com/Chonwai/dsh-gsap-skills#v1.0.8`。
 - **相对路径**——`./x`、`../x`、`file:./x`——会被拒绝，错误是
   `a local path must be absolute`。请用绝对目录或 `.tgz` 路径
   （`/Users/you/...`）。
 
-`github:Chonwai/dsh-gsap-skills#v1.0.7` 与
-`git+https://github.com/Chonwai/dsh-gsap-skills.git#v1.0.7` 是被接受的替代
+`github:Chonwai/dsh-gsap-skills#v1.0.8` 与
+`git+https://github.com/Chonwai/dsh-gsap-skills.git#v1.0.8` 是被接受的替代
 形式，与 hosted URL 等价。
 
 ## 3. 通道 1——Plugins 页（对朋友最推荐）
@@ -75,8 +75,8 @@ Plugin Manager 会在 pnpm 看到 spec 之前先校验。常见失败有两种�
 1. 打开侧边栏的 **DSH → Plugins**。
 2. **Add plugin** → **Install a third-party plugin**。
 3. 粘贴钉好的 spec：
-   `https://github.com/Chonwai/dsh-gsap-skills#v1.0.7`
-   （或 `github:Chonwai/dsh-gsap-skills#v1.0.7`）。
+   `https://github.com/Chonwai/dsh-gsap-skills#v1.0.8`
+   （或 `github:Chonwai/dsh-gsap-skills#v1.0.8`）。
 4. 阅读信任确认框并确认。DSH 会克隆该 tag、加上 profile dependency 与 bundle
    row，并启用 bundle。
 5. 如果对话框提供 **Enable now**，就接受它。
@@ -93,7 +93,7 @@ git 通道需要 `git` 与网络；私有 fork 需要它自己的凭证。
 在具备 Full access（或你能回答审批提示）的 session 里：
 
 ```
-plugin_manager(action: "install_bundle", target: "https://github.com/Chonwai/dsh-gsap-skills#v1.0.7")
+plugin_manager(action: "install_bundle", target: "https://github.com/Chonwai/dsh-gsap-skills#v1.0.8")
 ```
 
 同样接受绝对路径、tarball URL 或 git 形式。返回的 `application: "applied"` 表示
@@ -102,14 +102,14 @@ profile 已变更；它不代表运行中的 host 已挂载这个 row——预�
 
 ## 5. 通道 3——离线 tarball
 
-从 GitHub release 下载 `dsh-gsap-skills-1.0.7.tgz`，然后验证并安装它（`npm
-pack` 产出的同一份字节叫 `chonwai-dsh-gsap-skills-1.0.7.tgz`；release asset 是
+从 GitHub release 下载 `dsh-gsap-skills-1.0.8.tgz`，然后验证并安装它（`npm
+pack` 产出的同一份字节叫 `chonwai-dsh-gsap-skills-1.0.8.tgz`；release asset 是
 改过名的）：
 
 ```bash
-shasum -a 256 -c dsh-gsap-skills-1.0.7.tgz.sha256
+shasum -a 256 -c dsh-gsap-skills-1.0.8.tgz.sha256
 # then, in the Plugins dialog, paste the absolute path to the .tgz:
-#   /Users/you/Downloads/dsh-gsap-skills-1.0.7.tgz
+#   /Users/you/Downloads/dsh-gsap-skills-1.0.8.tgz
 ```
 
 `plugin_manager` 接受同样的绝对 tarball 路径。解包后的目录也可以，只要路径是
@@ -127,7 +127,7 @@ repo 一样通过同样的闸门。
 npm publish --access public        # after flipping private -> false for that release
 
 # friend
-plugin_manager(action: "install_bundle", target: "@chonwai/dsh-gsap-skills@1.0.7")
+plugin_manager(action: "install_bundle", target: "@chonwai/dsh-gsap-skills@1.0.8")
 ```
 
 发布是一个由人刻意执行的动作；在 release notes 写明之前，不要假设 registry
@@ -202,7 +202,7 @@ done
 ```
 GSAP skills for DeepSeek Harness — unofficial bundle, 8 skills:
 https://github.com/Chonwai/dsh-gsap-skills
-DSH → Plugins → Add plugin → Install a third-party plugin → paste https://github.com/Chonwai/dsh-gsap-skills#v1.0.7
+DSH → Plugins → Add plugin → Install a third-party plugin → paste https://github.com/Chonwai/dsh-gsap-skills#v1.0.8
 Read the trust box and confirm, choose Enable now, restart DSH, then load /gsap-core.
 If skills don't appear: move ~/.agents/skills/gsap-* (and $DSH_HOME/skills, project .agents/skills) out of the skills root.
 ```
