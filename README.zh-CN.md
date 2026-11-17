@@ -27,7 +27,7 @@ profile 已安装就不等于 catalog 的胜出条目是 bundle。
 ## 快速开始
 
 在 **Plugins → Add plugin → Install a third-party plugin** 里贴上
-`https://github.com/Chonwai/dsh-gsap-skills#v1.0.8`，按 **Enable now**，然后
+`https://github.com/Chonwai/dsh-gsap-skills#v1.0.9`，按 **Enable now**，然后
 **重启 DSH**、打开一个 session，载入 `/gsap-core`。其他通道（release
 tarball、agent／`plugin_manager`、未来的 npm）、验证方式、layer 迁移与疑难排解：
 [docs/DISTRIBUTION.zh-CN.md](docs/DISTRIBUTION.zh-CN.md)。
