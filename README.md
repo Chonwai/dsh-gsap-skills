@@ -1,3 +1,7 @@
+**English** · [繁體中文](README.zh-TW.md) · [简体中文](README.zh-CN.md)
+
+> This is the English original. Translations are provided for convenience; the English text is canonical.
+
 # GSAP Skills for DeepSeek Harness
 
 **`@chonwai/dsh-gsap-skills`** packages the eight official [GSAP skills](https://github.com/greensock/gsap-skills)
