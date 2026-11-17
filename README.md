@@ -1,4 +1,4 @@
-**English** · [繁體中文](README.zh-TW.md) · [简体中文](README.zh-CN.md)
+[English](README.md) · [繁體中文](README.zh-TW.md) · [简体中文](README.zh-CN.md)
 
 > This is the English original. Translations are provided for convenience; the English text is canonical.
 
