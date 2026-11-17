@@ -55,7 +55,10 @@
     "provenance.json",
     "tools",
     "demo",
-    "assets"
+    "assets",
+    "README.zh-CN.md",
+    "INSTALL.zh-TW.md",
+    "INSTALL.zh-CN.md"
   ],
   "dsh": {
     "bundle": {

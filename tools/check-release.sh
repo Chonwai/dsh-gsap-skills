@@ -93,6 +93,8 @@ const required = [
   'skills/gsap-performance/SKILL.md',
   'skills/llms.txt',
   'docs/DISTRIBUTION.md',
+  'docs/DISTRIBUTION.zh-TW.md',
+  'docs/DISTRIBUTION.zh-CN.md',
   'docs/KNOWN-UPSTREAM-ISSUES.md',
   'docs/SERIES.md',
   'locale/en.json',
@@ -115,22 +117,40 @@ console.log(`PASS  npm pack includes all ${required.length} required files (${pa
 JS
 ok "npm tarball would contain the runtime, docs, tests and metadata"
 
-# Install docs must pin the current tag and carry no stale tag pins.
-for doc in README.md README.zh-TW.md docs/DISTRIBUTION.md; do
-  [ -f "$doc" ] || continue
-  grep -qF "#v${VERSION}" "$doc" || fail "$doc does not pin #v${VERSION}"
-  stale="$(grep -oE '#v[0-9]+\.[0-9]+\.[0-9]+' "$doc" | grep -vxF "#v${VERSION}" | sort -u | tr '\n' ' ' || true)"
-  [ -z "$stale" ] || fail "$doc has stale install pins: ${stale}"
-done
-ok "install docs pin #v${VERSION} and carry no stale tag pins"
+# Trilingual documentation: every variant exists and links the other two.
+check_trio() {
+  dir="$1"; stem="$2"
+  for suf in "" ".zh-TW" ".zh-CN"; do
+    [ -f "$dir/$stem$suf.md" ] || fail "missing translated doc: $dir/$stem$suf.md"
+  done
+  for suf in "" ".zh-TW" ".zh-CN"; do
+    for other in "" ".zh-TW" ".zh-CN"; do
+      [ "$suf" = "$other" ] && continue
+      grep -qF "$stem$other.md" "$dir/$stem$suf.md" ||
+        fail "$dir/$stem$suf.md does not link $stem$other.md"
+    done
+  done
+}
+check_trio "." "README"
+check_trio "." "INSTALL"
+check_trio "docs" "DISTRIBUTION"
+ok "README/INSTALL/DISTRIBUTION exist in EN, zh-TW and zh-CN and cross-link"
 
-for doc in README.md INSTALL.md docs/DISTRIBUTION.md; do
-  [ -f "$doc" ] || continue
+# Install docs must pin the current tag and carry no stale tag/tarball pins.
+for doc in README.md README.zh-TW.md README.zh-CN.md \
+           INSTALL.md INSTALL.zh-TW.md INSTALL.zh-CN.md \
+           docs/DISTRIBUTION.md docs/DISTRIBUTION.zh-TW.md docs/DISTRIBUTION.zh-CN.md; do
+  [ -f "$doc" ] || fail "missing doc: $doc"
+  if grep -qE '#v[0-9]+\.[0-9]+\.[0-9]+' "$doc"; then
+    grep -qF "#v${VERSION}" "$doc" || fail "$doc does not pin #v${VERSION}"
+    stale="$(grep -oE '#v[0-9]+\.[0-9]+\.[0-9]+' "$doc" | grep -vxF "#v${VERSION}" | sort -u | tr '\n' ' ' || true)"
+    [ -z "$stale" ] || fail "$doc has stale install pins: ${stale}"
+  fi
   stale_tar="$(grep -oE 'dsh-gsap-skills-[0-9]+\.[0-9]+\.[0-9]+\.tgz' "$doc" | grep -vxF "dsh-gsap-skills-${VERSION}.tgz" | sort -u | tr '\n' ' ' || true)"
   [ -z "$stale_tar" ] || fail "$doc names a stale release tarball: ${stale_tar}"
   stale_pkg="$(grep -oE '@chonwai/dsh-gsap-skills@[0-9]+\.[0-9]+\.[0-9]+' "$doc" | grep -vxF "@chonwai/dsh-gsap-skills@${VERSION}" | sort -u | tr '\n' ' ' || true)"
   [ -z "$stale_pkg" ] || fail "$doc names a stale npm package version: ${stale_pkg}"
 done
-ok "install docs name the current tarball and npm package version"
+ok "all language variants pin #v${VERSION} and carry no stale tarball/npm names"
 
 echo "RESULT: PASS (release ${TAG} is consistent)"
