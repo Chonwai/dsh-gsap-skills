@@ -1,17 +1,17 @@
 [English](INSTALL.md) · [繁體中文](INSTALL.zh-TW.md) · [简体中文](INSTALL.zh-CN.md)
 
-> 本檔案是英文版的翻譯；英文版為準。
+> 本文件是英文版的翻譯；英文版為準。
 
 # INSTALL — @chonwai/dsh-gsap-skills
 
-DeepSeek Harness（DSH）bundle 的安裝、啟用、遷移、驗證、更新與回滾。以 macOS
-上的 DSH **0.2.2-rc.1** 為準；同樣的流程適用於任何受管理的 profile。
+本指南說明 DeepSeek Harness（DSH）bundle 的安裝、啟用、遷移、驗證、更新與回滾，
+以 macOS 上的 DSH **0.2.2-rc.1** 為準；同樣流程適用於任何受管理的 profile。
 
 > 本 bundle 是 Host-only：一個 plugin row 註冊 8 個 runtime skill。
 >
 > **啟用規則：profile bundle rows 是在 DSH host 啟動時 compose 的。** 在已經
 > 執行的 host 上安裝、啟用、停用或移除 bundle 之後，**要重啟 DSH**。新建
-> session 或過載 Web 頁面都**不會**重新 compose profile。`plugin_manager` 報告
+> session 或重新載入 Web 頁面都**不會**重新 compose profile。`plugin_manager` 報告
 > installed/enabled 只代表 profile 正確，不代表執行中的 host 掛載了這個 row。
 >
 > **Skill layer 規則：本 bundle 註冊在 host/global layer。** Web app 把
@@ -22,8 +22,8 @@ DeepSeek Harness（DSH）bundle 的安裝、啟用、遷移、驗證、更新與
 > 把檔案層副本遷移出去（§5）。
 
 > 面向朋友的釋出通道（Plugins 頁、git tag、release tarball、未來的 npm）以及
-> 可直接複製的訊息，見 [docs/DISTRIBUTION.zh-CN.md](docs/DISTRIBUTION.zh-CN.md)；
-> 本檔案保留完整的安裝／驗證／回滾流程。
+> 可直接複製的訊息，見 [docs/DISTRIBUTION.zh-TW.md](docs/DISTRIBUTION.zh-TW.md)；
+> 本文件保留完整的安裝／驗證／回滾流程。
 
 ## 0. 安裝之前
 
@@ -32,10 +32,10 @@ DeepSeek Harness（DSH）bundle 的安裝、啟用、遷移、驗證、更新與
 | 預檢 | `test -d ~/.agents/skills/gsap-core && echo "WARNING: file-level copy will shadow the bundle"`——若有輸出，先遷移（§5） |
 | 寫入什麼 | profile 的 `package.json` dependency（本地目錄用 `link:`）、有序的 `dsh.profile.bundles` 清單、profile 的 `node_modules` 連結與 lockfile——由 DSH 的 Plugin Manager 完成，不是本套件 |
 | 本套件在 runtime 寫什麼 | 不寫自己套件之外的任何位置；只讀 `skills/**` |
-| 需要的許可權 | 每個 `plugin_manager` 動作（包括列表）都需要 **Full access** 或一個審批提示；Web UI 的安裝對話方塊有自己的信任確認 |
+| 需要的權限 | 每個 `plugin_manager` 動作（包括列表）都需要 **Full access** 或一個審批提示；Web UI 的安裝對話方塊有自己的信任確認 |
 | 網路 | 本地目錄安裝不需要；沒有要下載的依賴 |
 | 重啟 | **任何 bundle 變更後都必須重啟**；執行中的 host 只會保留它啟動時的那批 row |
-| GSAP 庫 | **未隨附**。這些 skill 只是記錄 GSAP；每個專案要按 GreenSock 的授權自行安裝 `gsap` |
+| GSAP 函式庫 | **未隨附**。這些 skill 只是記錄 GSAP；每個專案要按 GreenSock 的授權自行安裝 `gsap` |
 | 退場方式 | 把 bundle 關掉（再重啟），或移除它（見 §7） |
 
 ## 1. 從 Web UI 安裝（建議）
@@ -62,7 +62,7 @@ plugin_manager(action: "install_bundle", target: "/abs/path/to/dsh-gsap-skills")
   `dsh.profile.bundles`、套用 `dsh.bundle.patch`、啟用 bundle。
 - 沒有依賴，也沒有 install script，所以不會出現 `approvedBuilds` /
   `pendingBuilds` 提示。
-- 看返回的 `application` 欄位：`applied` 表示 profile 層已套用。它**不**表示
+- 看傳回的 `application` 欄位：`applied` 表示 profile 層已套用。它**不**表示
   執行中的 host 已掛載這個 row——預期 skill 出現之前，先重啟 DSH。
   `restart-required` 講的是同一件事，只是更明確。
 
@@ -209,7 +209,7 @@ bundle 驗證透過為止。移完之後，等下一個 pre-step（或發一條�
 
 | 症狀 | 可能原因 | 處理 |
 |---|---|---|
-| bundle 顯示 installed/enabled，但過載或新 session 後 catalog 沒變 | 重啟前就是這樣；bundle rows 在 host 啟動時 compose | 重啟 DSH |
+| bundle 顯示 installed/enabled，但重新載入或新 session 後 catalog 沒變 | 重啟前就是這樣；bundle rows 在 host 啟動時 compose | 重啟 DSH |
 | 重啟後 catalog 裡仍是 skill 的舊副本 | 還有檔案層副本留在 preset 會掃的目錄裡；它從更近的層勝出 | 跑 §5 的預檢，把副本移出，等一個 pre-step |
 | `skill("gsap-core")` 顯示錯誤的 transform 順序 | 載入的正文是檔案層副本，或是較舊的 module generation | 遷移檔案層副本；如果 bundle 已經是勝出者，重啟 DSH 換新的 module generation |
 | catalog 裡少了一個 skill | 另一個 runtime 註冊佔用了那個名字（會有警告），或 `skills` 不存在 | 移除競爭的 runtime 來源；確認 `skills` 已掛載 |

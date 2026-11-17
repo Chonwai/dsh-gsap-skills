@@ -4,7 +4,7 @@
 
 # GSAP Skills for DeepSeek Harness
 
-**`@chonwai/dsh-gsap-skills`** 把 GSAP 官方 8 個 skill 打包成 DeepSeek Harness
+**`@chonwai/dsh-gsap-skills`** 把 [GSAP 官方 8 個 skill](https://github.com/greensock/gsap-skills) 打包成 DeepSeek Harness
 （DSH）bundle，並套用 **4 項已記錄的內容更正**。每個 `SKILL.md` 都註冊成
 runtime skill，session 可以按需載入 `gsap-core`、`gsap-timeline`、
 `gsap-scrolltrigger`、`gsap-plugins`、`gsap-utils`、`gsap-react`、
@@ -22,15 +22,15 @@ row；因此 `~/.agents/skills`、`$DSH_HOME/skills` 或專案 `.agents/skills` 
 無法蓋過它**。要讓 bundle 生效，必須把檔案層副本移出 skills root；見下方
 〈從檔案層安裝遷移〉。Profile 已安裝不等於 catalog 的勝出條目是 bundle。
 
-## Quick start
+## 快速開始
 
 在 **Plugins → Add plugin → Install a third-party plugin** 貼上
-`https://github.com/Chonwai/dsh-gsap-skills#v1.0.8`，按 **Enable now**，然後
+`https://github.com/Chonwai/dsh-gsap-skills#v1.0.9`，按 **Enable now**，然後
 **重啟 DSH**、開新 session，載入 `/gsap-core`。其他安裝通道（release tarball、
 agent／`plugin_manager`、未來 npm）、驗證方式、layer 遷移與疑難排解：
 [docs/DISTRIBUTION.md](docs/DISTRIBUTION.zh-TW.md)。
 
-## Demo
+## 示範
 
 [`demo/`](demo/) 是一個自包含的互動展示頁，用本 bundle 自己的 skill 指引寫成：
 hero 進場 timeline、隨滾動揭露的 skill 卡片，以及 pinned、隨滾動 scrub 的
